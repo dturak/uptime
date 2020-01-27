@@ -1,3 +1,8 @@
+#all_up, #all_down{
+  color: #fff;
+  font-size: 20px;
+}
+
 h1, h2, h3 {
   font-weight: normal;
 }
@@ -318,4 +323,12 @@ ul.nav-tabs li span {
 
 #myBtn:hover {
   background-color: #343a40
+}
+
+.link{
+  font-size: 12px;
+}
+
+.logo{
+  font-size: 30px;
 }

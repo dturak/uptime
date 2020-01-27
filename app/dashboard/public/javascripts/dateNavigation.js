@@ -113,9 +113,9 @@ DateNavigation.prototype.redrawPeriods = function () {
     var type = this.interval.type;
     var periods = '<div class="btn-group">';
     if (this.interval.beginsAfterOrigin()) {
-        periods += '<button class="btn btn-small" data-type="' + type + '" data-date="' + this.interval.getPreviousDate() + '">&lt;</button>';
+        periods += '<button class="btn btn-dark btn-small" data-type="' + type + '" data-date="' + this.interval.getPreviousDate() + '">&lt;</button>';
     } else {
-        periods += '<button class="btn btn-small" disabled="disabled">&lt;</button>';
+        periods += '<button class="btn btn-dark btn-small" disabled="disabled">&lt;</button>';
     }
     var begin = this.interval.begin;
     var end = this.interval.end;
@@ -123,9 +123,9 @@ DateNavigation.prototype.redrawPeriods = function () {
     var d = begin.clone();
     while (d.valueOf() < end.valueOf()) {
         if (d.valueOf() < Date.now() && d.clone().endOf(subtype).valueOf() > this.interval.origin && !this.interval.isMaxZoom()) {
-            periods += '<button class="btn btn-small ' + subtype + ' nb' + end.date() + ' fontSize" data-type="' + subtype + '" data-date="' + d.valueOf() + '" title="' + this.tooltipForPeriod(d, subtype) + '">' + this.titleForPeriod(d, subtype) + '</button>';
+            periods += '<button class="btn btn-dark btn-small ' + subtype + ' nb' + end.date() + ' fontSize" data-type="' + subtype + '" data-date="' + d.valueOf() + '" title="' + this.tooltipForPeriod(d, subtype) + '">' + this.titleForPeriod(d, subtype) + '</button>';
         } else {
-            periods += '<button class="btn btn-small ' + subtype + ' nb' + end.date() + ' fontSize" disabled="disabled">' + this.titleForPeriod(d, subtype) + '</button>';
+            periods += '<button class="btn btn-dark btn-small ' + subtype + ' nb' + end.date() + ' fontSize" disabled="disabled">' + this.titleForPeriod(d, subtype) + '</button>';
         }
         if (subtype === 'tenminutes') {
             d.add('minutes', 10);
@@ -134,9 +134,9 @@ DateNavigation.prototype.redrawPeriods = function () {
         }
     }
     if (this.interval.endsBeforeNow()) {
-        periods += '<button class="btn btn-small" data-type="' + type + '" data-date="' + this.interval.getNextDate() + '">&gt;</button>';
+        periods += '<button class="btn btn-dark btn-small" data-type="' + type + '" data-date="' + this.interval.getNextDate() + '">&gt;</button>';
     } else {
-        periods += '<button class="btn btn-small" disabled="disabled">&gt;</button>';
+        periods += '<button class="btn btn-dark btn-small" disabled="disabled">&gt;</button>';
     }
     periods += '</div>';
     $('#dateNavigation .periods').html(periods);
@@ -150,19 +150,19 @@ DateNavigation.prototype.redrawTitle = function () {
             break;
         case 'month':
             title += momentForDate.format('MMMM');
-            title += ' <div class="btn-group"><button class="btn btn-link" data-type="year" data-date="' + this.interval.date + '">';
+            title += ' <div class="btn-group"><button class="btn btn-dark btn-link" data-type="year" data-date="' + this.interval.date + '">';
             title += momentForDate.year();
             title += '</button></div>';
             break;
         case 'day':
             title += momentForDate.format('dddd ');
-            title += '<div class="btn-group"><button class="btn btn-link" data-type="month" data-date="' + this.interval.date + '">';
+            title += '<div class="btn-group"><button class="btn btn-dark btn-link" data-type="month" data-date="' + this.interval.date + '">';
             title += momentForDate.format('MMMM');
             title += '</button></div> ';
             title += momentForDate.format('Do, YYYY');
             break;
         case 'hour':
-            title += '<div class="btn-group"><button class="btn btn-link" data-type="day" data-date="' + this.interval.date + '">';
+            title += '<div class="btn-group"><button class="btn btn-dark btn-link" data-type="day" data-date="' + this.interval.date + '">';
             title += momentForDate.format('dddd MMMM Do');
             title += '</button></div>, ';
             title += momentForDate.clone().startOf('hour').format('ha') + ' to ' + momentForDate.clone().endOf('hour').format('h:mma');
@@ -173,15 +173,15 @@ DateNavigation.prototype.redrawZoom = function () {
     var zoom = '';
     var subType = this.interval.subType(this.interval.type);
     if (subType !== false && !this.interval.isMaxZoom()) {
-        zoom += '<button class="btn btn-small" data-type="' + subType + '" data-date="' + this.interval.date + '"><i class="fas fa-search-plus"></i></li></button>';
+        zoom += '<button class="btn btn-dark btn-small" data-type="' + subType + '" data-date="' + this.interval.date + '"><i class="fas fa-search-plus"></i></li></button>';
     } else {
-        zoom += '<button class="btn btn-small zoomStyle" disabled="disabled"><i class="fas fa-search-plus"></i></button>'
+        zoom += '<button class="btn btn-dark btn-small zoomStyle" disabled="disabled"><i class="fas fa-search-plus"></i></button>'
     }
     var superType = this.interval.superType(this.interval.type);
     if (superType !== false) {
-        zoom += '<button class="btn btn-small zoomStyle" data-type="' + superType + '" data-date="' + this.interval.date + '"><i class="fas fa-search-minus"></i></button>';
+        zoom += '<button class="btn btn-dark btn-small zoomStyle" data-type="' + superType + '" data-date="' + this.interval.date + '"><i class="fas fa-search-minus"></i></button>';
     } else {
-        zoom += '<button class="btn btn-small zoomStyle" disabled="disabled"><i class="fas fa-search-minus"></button>'
+        zoom += '<button class="btn btn-dark btn-small zoomStyle" disabled="disabled"><i class="fas fa-search-minus"></button>'
     }
     $('#dateNavigation .zoom').html(zoom);
 }
