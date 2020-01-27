@@ -19,12 +19,12 @@ ejs.close = '}}';
 <div class="alert alert-success"><%= info %></div>
 <% } %>
 <div id="sectionList" class="row">
-  <div class="col col-12 col-md-3 d-none d-md-block bg-light sidebar">
+  <div class="col col-md-3 d-none d-md-block bg-light sidebar pt-5">
     <div class="sidebar-sticky">
       <ul class="nav flex-column" aria-orientation="vertical">
         <li class="nav-item">
           <a
-            class="nav-link" href="#"
+            class="nav-link" href="#availability"
             title="Percentage of uptime over the period"
           >
             Availability
@@ -33,7 +33,7 @@ ejs.close = '}}';
         </li>
         <li class="nav-item">
           <a
-            class="nav-link" href="#"
+            class="nav-link" href="#events"
           >
             Downtime
             <i class="fas fa-chevron-right"></i>
@@ -70,23 +70,26 @@ ejs.close = '}}';
   </div>
   <div class="col col-12 col-md-9">
     <h1>
-      Check "<%= check.name %>"
+      "<%= check.name %>"
       <a href="<%= check.url %>" target="_blank"><img src="<%= route %>/images/external-link-ltr-icon.png"></a>
     </h1>
     <div id="dateNavigationContainer">
       <div id="dateNavigation">
         <div class="row">
-          <div class="col col-2"></div>
-          <div class="col col-10">
+          <div class="col col-4">
+            <ul class="btn-group zoom"></ul>
+          </div>
+          <div class="col col-8">
             <div class="title"></div>
-            <div class="timeline"></div>
           </div>
         </div>
         <div class="row">
-          <div class="col col-2">
-            <ul class="btn-group zoom"></ul>
-          </div>
-          <div class="col col-10">
+            <div class="col">
+                <div class="timeline"></div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col">
             <div class="periods"></div>
           </div>
         </div>
