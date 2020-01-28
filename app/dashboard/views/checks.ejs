@@ -9,7 +9,7 @@
   <a class="btn btn-primary" href="<%= route %>/checks/new">Create check</a>
 </div>
 <table class="table" id="checks">
-  <thead>
+  <thead class="thead-dark">
     <tr>
       <th style="width:25%">Name</th>
       <th style="width:15%">Tags</th>
@@ -27,7 +27,7 @@
       <i class="fas fa-lock {{= check.validSSL ? 'text-success' : 'text-danger' }}"></i>
     {{ } }}
     <a href="{{=  route + '/checks/' + check._id }}">{{= check.name }}</a>
-    <a href="{{= check.url }}" target="_blank"><img src="{{= route }}/images/external-link-ltr-icon.png"></a>
+    <a href="{{= check.url }}" target="_blank"><i class="fas fa-external-link-alt link"></i></a>
     {{ if (typeof check.errorMessage !== 'undefined') { }}
       <br />
       {{= check.errorMessage }}

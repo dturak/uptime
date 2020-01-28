@@ -175,13 +175,13 @@ DateNavigation.prototype.redrawZoom = function () {
     if (subType !== false && !this.interval.isMaxZoom()) {
         zoom += '<button class="btn btn-dark btn-small" data-type="' + subType + '" data-date="' + this.interval.date + '"><i class="fas fa-search-plus"></i></li></button>';
     } else {
-        zoom += '<button class="btn btn-dark btn-small zoomStyle" disabled="disabled"><i class="fas fa-search-plus"></i></button>'
+        zoom += '<button class="btn btn-dark btn-small" disabled="disabled"><i class="fas fa-search-plus"></i></button>'
     }
     var superType = this.interval.superType(this.interval.type);
     if (superType !== false) {
-        zoom += '<button class="btn btn-dark btn-small zoomStyle" data-type="' + superType + '" data-date="' + this.interval.date + '"><i class="fas fa-search-minus"></i></button>';
+        zoom += '<button class="btn btn-dark btn-small" data-type="' + superType + '" data-date="' + this.interval.date + '"><i class="fas fa-search-minus"></i></button>';
     } else {
-        zoom += '<button class="btn btn-dark btn-small zoomStyle" disabled="disabled"><i class="fas fa-search-minus"></button>'
+        zoom += '<button class="btn btn-dark btn-small" disabled="disabled"><i class="fas fa-search-minus"></button>'
     }
     $('#dateNavigation .zoom').html(zoom);
 }
