@@ -59,12 +59,25 @@ module.exports = function(app) {
       if (!check.needsPoll) {
         return res.send('Error: This check was already polled. No ping was created', 403);
       }
+
       var status = req.body.status === 'true';
-      Ping.createForCheck(status, req.body.timestamp, req.body.time, check, req.body.name, req.body.error, req.body.details,  function(err2, ping) {
-        if (err2) {
-          return res.send(err2.message, 500);
+
+      Ping.createForCheck({
+        status,
+        statusCode:req.body.statusCode,
+        timestamp: req.body.timestamp,
+        time: req.body.time,
+        check,
+        monitorName: req.body.name,
+        error: req.body.error, 
+        errorCode: req.body.errorCode, 
+        details: req.body.details,
+        callback: function(err2, ping) {
+          if (err2) {
+            return res.status(500).send(err2.message);
+          }
+          res.json(ping);
         }
-        res.json(ping);
       });
     });
   });
