@@ -121,7 +121,6 @@ exports.initMonitor = function(options) {
         if (kind == "text" || kind == "number") {
             var checkPattern = check.pollerParams && check.pollerParams.match;
             if (checkPattern) {
-                //console.log("CHECK REGEX: " + checkPattern);
                 try {
                     var regex = new RegExp(checkPattern);
                     var result = res.body.match(regex);

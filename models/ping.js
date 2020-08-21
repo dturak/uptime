@@ -68,7 +68,6 @@ Ping.statics.createForCheck = function({ status, statusCode, timestamp, time, ch
   ping.save(function(err1) {
     if ('undefined' === typeof callback) return false;
     if (err1) return callback(err1);
-    //console.log('statusCode 68', statusCode)
     check.setLastTest({ status, statusCode, timestamp, error, errorCode });
     check.save(function(err2) {
       if (err2) return callback(err2);
