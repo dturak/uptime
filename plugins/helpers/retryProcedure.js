@@ -15,7 +15,6 @@ function retryProcedure(notify3rdParty){
     function (cb){
 
       counter++;
-      //console.log('Attempt number: ' + counter);
       setTimeout(function() {
 
         notify3rdParty(function(result) {

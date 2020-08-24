@@ -1,4 +1,4 @@
-uptime
+Uptime
 ======
 
 A remote monitoring application using Node.js, MongoDB, and Twitter Bootstrap.
@@ -29,6 +29,22 @@ Features
 * Complete API for integration with third-party monitoring services
 * Powerful plugin system to ease extension and customization
 * Easy installation and zero administration
+
+Running Uptime in Docker
+------------------------
+
+```
+# Build the docker image (from the root repo directory)
+docker build -t uptime .
+
+# Run MongoDB
+docker run -d --name mongodb mongo
+
+# Run Uptime and link MongoDB
+docker run -d -p 3003:3003 --name uptime --link mongodb:mongodb -i -t uptime
+```
+Then point your browser at [http://localhost:3003](http://localhost:3003)
+
 
 Installing Uptime
 -----------------

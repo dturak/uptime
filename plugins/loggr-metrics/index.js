@@ -121,7 +121,6 @@ exports.initMonitor = function(options) {
         if (kind == "text" || kind == "number") {
             var checkPattern = check.pollerParams && check.pollerParams.match;
             if (checkPattern) {
-                //console.log("CHECK REGEX: " + checkPattern);
                 try {
                     var regex = new RegExp(checkPattern);
                     var result = res.body.match(regex);
@@ -174,8 +173,9 @@ exports.initMonitor = function(options) {
         var post_req = http.request(post_options, function(res) {
             res.setEncoding('utf8');
             res.on('data', function (chunk) {
-		if (trim(chunk) != "")
-                console.log('Response: ' + chunk);
+		        if (trim(chunk) != "") {
+                    console.log('Response: ' + chunk);
+                }
             });
         });
 
