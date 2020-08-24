@@ -3,11 +3,7 @@ port: 3003
 debug: false
 
 mongodb:
-  server:   localhost
-  database: uptime
-  user:     root
-  password:
-  connectionString: mongodb://localhost/uptime      # alternative to setting server, database, user and password separately
+  connectionString: mongodb://mongodb/uptime      # alternative to setting server, database, user and password separately
 
 monitor:
   name:                   origin
