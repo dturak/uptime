@@ -1,6 +1,6 @@
-[Down] Check "<%= check.name %>" just went down
+Alert | <%= check.name %> is Down!
 On <%= moment(checkEvent.timestamp).format('LLLL') %>,
-<%= check.name %> went down:
+<%= check.name %> went down due to the following error:
 
     <%= checkEvent.details %>
 
