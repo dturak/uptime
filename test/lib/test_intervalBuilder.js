@@ -142,7 +142,7 @@ describe('intervalBuilder', function() {
 //        done();
 //      });
 //    });
-//  });
+  });
   
   after(function(done) {
     async.parallel([
