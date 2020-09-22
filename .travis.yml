@@ -6,7 +6,7 @@ services:
 install:
   - npm install
 before_script:
-  - node app
+  - NODE_ENV=test node app
 #  - sudo service mongod start
 #  - sudo mongod
 script:
