@@ -5,6 +5,8 @@ services:
   - mongodb
 install:
   - npm install
+before_script:
+  - mongod
 script:
   - yarn test
 after_success:
