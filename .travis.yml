@@ -5,7 +5,8 @@ services:
   - mongodb
 install:
   - npm install
-#before_script:
+before_script:
+  - node app
 #  - sudo service mongod start
 #  - sudo mongod
 script:
