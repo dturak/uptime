@@ -7,11 +7,11 @@ var http = require('http');
 
 describe('GET /checks', function() {
 
-  var check1, check2; // fixtures
+  var check1, check2, pollerCollection; // fixtures
 
   before(function(done) {
 //    pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3003, done);
+//    this.server = app.listen(3003, done);
   });
 
   before(function(done) {
