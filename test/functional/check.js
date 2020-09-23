@@ -141,7 +141,7 @@ describe('PUT /checks', function() {
       res.on('data', function(chunk) {
         body += chunk;
       });
-      res.on('end', function() {
+      res.on('end', function(done) {
         var object = JSON.parse(body);
         Check.findOne({ _id : object._id }, function(error, document) {
           if (error) {return done(new Error('Error, object not found'))}
