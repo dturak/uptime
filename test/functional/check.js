@@ -243,56 +243,20 @@ describe('POST /checks/:id', function() {
     check2.save();
   });
 
-  it('should return error if id parameter does not exists', function(done) {
-
-    var postData = JSON.stringify({
-      name: 'test'
-    });
-
-    var options = {
-      hostname: '127.0.0.1',
-      port: 3003,
-      path: '/api/checks/toto',
-      method: 'POST',
-      headers: {
-        'Content-Length': postData.length,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    };
-
-    var req = http.request(options, function(res) {
-      res.setEncoding('utf8');
-      var body = '';
-
-      res.on('data', function(chunk) {
-        body += chunk;
-      });
-      res.on('end', function() {
-        var object = JSON.parse(body);
-        assert.notEqual(typeof(object.error), 'undefined');
-      });
-    });
-
-    req.write(postData);
-    req.end();
-  });
-
-//  it('should update object if parameters are valid', function() {
+//  it('should return error if id parameter does not exists', function(done) {
 //
 //    var postData = JSON.stringify({
-//      name: 'test',
-//      url:'http://newurl.test'
+//      name: 'test'
 //    });
 //
 //    var options = {
 //      hostname: '127.0.0.1',
 //      port: 3003,
-//      path: '/api/checks/' + check1.id,
+//      path: '/api/checks/toto',
 //      method: 'POST',
 //      headers: {
 //        'Content-Length': postData.length,
-//        'Content-type': 'application/json',
+//        'Content-Type': 'application/json',
 //        'Accept': 'application/json'
 //      }
 //    };
@@ -306,14 +270,50 @@ describe('POST /checks/:id', function() {
 //      });
 //      res.on('end', function() {
 //        var object = JSON.parse(body);
-//        assert.equal(object.name, 'test');
-//        assert.equal(object.url, 'http://newurl.test');
+//        assert.notEqual(typeof(object.error), 'undefined');
 //      });
 //    });
 //
 //    req.write(postData);
 //    req.end();
 //  });
+
+  it('should update object if parameters are valid', function() {
+
+    var postData = JSON.stringify({
+      name: 'test',
+      url:'http://newurl.test'
+    });
+
+    var options = {
+      hostname: '127.0.0.1',
+      port: 3003,
+      path: '/api/checks/' + check1.id,
+      method: 'POST',
+      headers: {
+        'Content-Length': postData.length,
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      }
+    };
+
+    var req = http.request(options, function(res) {
+      res.setEncoding('utf8');
+      var body = '';
+
+      res.on('data', function(chunk) {
+        body += chunk;
+      });
+      res.on('end', function() {
+        var object = JSON.parse(body);
+        assert.equal(object.name, 'test');
+        assert.equal(object.url, 'http://newurl.test');
+      });
+    });
+
+    req.write(postData);
+    req.end();
+  });
 //
 //  it('should not throw error if called twice on same id', function() {
 //    var postData = JSON.stringify({
