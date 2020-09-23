@@ -97,9 +97,11 @@ describe('PUT /checks', function() {
       res.on('end', function() {
         var object = JSON.parse(body);
         Check.findOne({ _id : object._id }, function(error, document) {
+//          if (error) {return done(new Error('Error, object not found'))}
           assert.notEqual(typeof(document), 'undefined');
           assert.notEqual(typeof(error), null);
           assert.equal(document.name, 'test');
+//          done();
         });
       });
     });
