@@ -9,10 +9,10 @@ describe('GET /checks', function() {
 
   var check1, check2, pollerCollection; // fixtures
 
-  before(function(done) {
-    pollerCollection = app.get('pollerCollection');
+//  before(function(done) {
+//    pollerCollection = app.get('pollerCollection');
 //    this.server = app.listen(3003, done);
-  });
+//  });
 
   before(function(done) {
     Check.remove({}, done);
