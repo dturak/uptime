@@ -244,10 +244,9 @@ describe('POST /checks/:id', function() {
 
     req.write(postData);
     req.end();
-    this.server.close();
   });
 
-  it('should update object if parameters are valid', function() {
+  it('should update object if parameters are valid', function(done) {
 
     var postData = JSON.stringify({
       name: 'test',
@@ -273,7 +272,7 @@ describe('POST /checks/:id', function() {
       res.on('data', function(chunk) {
         body += chunk;
       });
-      res.on('end', function() {
+      res.on('end', function(done) {
         var object = JSON.parse(body);
         assert.equal(object.name, 'test');
         assert.equal(object.url, 'http://newurl.test');
@@ -321,6 +320,11 @@ describe('POST /checks/:id', function() {
   });
 
   after(function() {
+    Check.remove({});
+    this.server.close();
+  });
+
+  after(function(done) {
     Check.remove({});
     this.server.close();
   });
