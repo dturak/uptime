@@ -176,7 +176,7 @@ describe('PUT /checks', function() {
       res.on('end', function() {
 //        process.stdout.write(body)
 //        var object = JSON.parse(body);
-        assert.equal(typeof(body), 'undefined');
+        assert.notEqual(typeof(body), 'undefined');
       });
     });
 
