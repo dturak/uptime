@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'test';
 var mongoose = require('../../bootstrap');
 var Check = require('../../models/check');
-//var app = require('../../app');
+var app = require('../../app');
 var assert = require('assert');
 var http = require('http');
 
@@ -9,10 +9,10 @@ describe('GET /checks', function() {
 
   var check1, check2, pollerCollection; // fixtures
 
-//  before(function(done) {
-//    pollerCollection = app.get('pollerCollection');
-//    this.server = app.listen(3003, done);
-//  });
+  before(function(done) {
+    pollerCollection = app.get('pollerCollection');
+    this.server = app.listen(3003, done);
+  });
 
   before(function(done) {
     Check.remove({}, done);
@@ -69,16 +69,16 @@ describe('GET /checks', function() {
     Check.remove({}, done);
   });
 
-//  after(function(done) {
-//    this.server.close(done);
-//  });
+  after(function(done) {
+    this.server.close(done);
+  });
 });
 
 describe('PUT /checks', function() {
 
-//  before(function(done) {
-//    this.server = app.listen(3003, done);
-//  });
+  before(function(done) {
+    this.server = app.listen(3003, done);
+  });
 
   it('should add a new valid element', function(done) {
 
@@ -209,19 +209,19 @@ describe('PUT /checks', function() {
     Check.remove({}, done);
   });
 
-//  after(function(done) {
-//    this.server.close(done);
-//  });
+  after(function(done) {
+    this.server.close(done);
+  });
 });
 
 describe('POST /checks/:id', function() {
 
   var check1, check2, pollerCollection; // fixtures
 
-//  before(function(done) {
-//    pollerCollection = app.get('pollerCollection');
-//    this.server = app.listen(3003, done);
-//  });
+  before(function(done) {
+    pollerCollection = app.get('pollerCollection');
+    this.server = app.listen(3003, done);
+  });
 
   before(function(done) {
     check1 = new Check();
@@ -365,7 +365,7 @@ describe('POST /checks/:id', function() {
     Check.remove({}, done);
   });
 
-//  after(function(done) {
-//    this.server.close(done);
-//  });
+  after(function(done) {
+    this.server.close(done);
+  });
 });
