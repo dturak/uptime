@@ -1,2 +1,2 @@
 mongodb:
-  connectionString: mongodb://127.0.0.1/uptime
+  connectionString: mongodb://localhost/uptime
