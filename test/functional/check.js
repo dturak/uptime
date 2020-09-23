@@ -9,10 +9,10 @@ describe('GET /checks', function() {
 
   var check1, check2, pollerCollection; // fixtures
 
-//  before(function(done) {
-//    pollerCollection = app.get('pollerCollection');
-//    this.server = app.listen(3003, done);
-//  });
+  before(function(done) {
+    pollerCollection = app.get('pollerCollection');
+    this.server = app.listen(3000, done);
+  });
 
   before(function(done) {
     Check.remove({}, done);
@@ -37,7 +37,7 @@ describe('GET /checks', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3003,
+      port: 3000,
       path: '/api/checks',
       headers: {
         'Accept': 'application/json'
@@ -69,17 +69,16 @@ describe('GET /checks', function() {
     Check.remove({}, done);
   });
 
-//  after(function(done) {
-//    this.server.close(done);
-//  });
+  after(function(done) {
+    this.server.close(done);
+  });
 });
 
 describe('PUT /checks', function() {
 
-//  before(function(done) {
-//    pollerCollection = app.get('pollerCollection');
-//    this.server = app.listen(3003, done);
-//  });
+  before(function(done) {
+    this.server = app.listen(3000, done);
+  });
 
   it('should add a new valid element', function(done) {
 
@@ -90,7 +89,7 @@ describe('PUT /checks', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3003,
+      port: 3000,
       path: '/api/checks',
       method: 'PUT',
       headers: {
@@ -135,7 +134,7 @@ describe('PUT /checks', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3003,
+      port: 3000,
       path: '/api/checks',
       method: 'PUT',
       headers: {
@@ -174,7 +173,7 @@ describe('PUT /checks', function() {
 //
 //    var options = {
 //      hostname: '127.0.0.1',
-//      port: 3003,
+//      port: 3000,
 //      path: '/api/checks',
 //      method: 'PUT',
 //      headers: {
@@ -210,19 +209,19 @@ describe('PUT /checks', function() {
     Check.remove({}, done);
   });
 
-//  after(function(done) {
-//    this.server.close(done);
-//  });
+  after(function(done) {
+    this.server.close(done);
+  });
 });
 
 describe('POST /checks/:id', function() {
 
   var check1, check2, pollerCollection; // fixtures
 
-//  before(function(done) {
-//    pollerCollection = app.get('pollerCollection');
-//    this.server = app.listen(3003, done);
-//  });
+  before(function(done) {
+    pollerCollection = app.get('pollerCollection');
+    this.server = app.listen(3000, done);
+  });
 
   before(function(done) {
     check1 = new Check();
@@ -247,7 +246,7 @@ describe('POST /checks/:id', function() {
 //
 //    var options = {
 //      hostname: '127.0.0.1',
-//      port: 3003,
+//      port: 3000,
 //      path: '/api/checks/toto',
 //      method: 'POST',
 //      headers: {
@@ -288,7 +287,7 @@ describe('POST /checks/:id', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3003,
+      port: 3000,
       path: '/api/checks/' + check1.id,
       method: 'POST',
       headers: {
@@ -329,7 +328,7 @@ describe('POST /checks/:id', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3003,
+      port: 3000,
       path: '/api/checks/' + check1.id,
       method: 'POST',
       headers: {
@@ -366,7 +365,7 @@ describe('POST /checks/:id', function() {
     Check.remove({}, done);
   });
 
-//  after(function(done) {
-//    this.server.close(done);
-//  });
+  after(function(done) {
+    this.server.close(done);
+  });
 });
