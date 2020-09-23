@@ -201,6 +201,7 @@ describe('PUT /checks', function() {
         body += chunk;
       });
       res.on('end', function() {
+        process.stdout.write(body)
         var object = JSON.parse(body);
         assert.notEqual(typeof(object.error), 'undefined');
       });
@@ -215,7 +216,7 @@ describe('PUT /checks', function() {
     this.server.close();
   });
 });
-//
+
 //describe('POST /checks/:id', function() {
 //
 //  var check1, check2; // fixtures
