@@ -199,10 +199,11 @@ describe('PUT /checks', function() {
       var body = '';
 
       res.on('data', function(chunk) {
+        process.stdout.write(chunk)
         body += chunk;
       });
       res.on('end', function() {
-        process.stdout.write(body)
+//        process.stdout.write(body)
         var object = JSON.parse(body);
         assert.notEqual(typeof(object.error), 'undefined');
       });
