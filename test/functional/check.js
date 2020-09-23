@@ -1,5 +1,5 @@
 process.env.NODE_ENV = 'test';
-//var mongoose = require('../../bootstrap');
+var mongoose = require('../../bootstrap');
 var Check = require('../../models/check');
 var app = require('../../app');
 var assert = require('assert');
@@ -8,15 +8,6 @@ var http = require('http');
 describe('GET /checks', function() {
 
   var check1, check2, pollerCollection; // fixtures
-
-//  before(function(done) {
-//    pollerCollection = app.get('pollerCollection');
-//    this.server = app.listen(3003, done);
-//  });
-
-//  before(function(done) {
-//    Check.remove({}, done);
-//  });
 
   before(function() {
     this.enableTimeouts(false)
@@ -36,21 +27,6 @@ describe('GET /checks', function() {
     check2.isPaused = false;
     check2.save();
   });
-
-//  before(function(done) {
-//    check1 = new Check();
-//    check1.url = 'http://www.url1.fr';
-//    check1.name = 'name1';
-//    check1.isPaused = false;
-//    check1.save(done);
-//  });
-//
-//  before(function(done) {
-//    check2 = new Check();
-//    check2.url = 'http://www.url2.fr';
-//    check2.isPaused = false;
-//    check2.save(done);
-//  });
 
   it('should fetch all elements', function() {
 
@@ -79,13 +55,6 @@ describe('GET /checks', function() {
     req.end();
   });
 
-//  after(function(done) {
-//    Check.remove({}, done);
-//  });
-//
-//  after(function(done) {
-//    this.server.close(done);
-//  });
   after(function() {
     this.server.close();
   });
@@ -176,42 +145,42 @@ describe('PUT /checks', function() {
     req.end();
   });
 
-//  it('should not add an invalid element with no url', function() {
-//    var postData = JSON.stringify({
-//      name: 'test',
-//      url: ''
-//    });
-//
-//    var options = {
-//      hostname: '127.0.0.1',
-//      port: 3003,
-//      path: '/api/checks',
-//      method: 'PUT',
-//      headers: {
-//        'Content-Length': postData.length,
-//        'Content-Type': 'application/json',
-//        'Accept': 'application/json'
-//      }
-//    };
-//
-//    var req = http.request(options, function(res) {
-//      res.setEncoding('utf8');
-//      var body = '';
-//
-//      res.on('data', function(chunk) {
-//        process.stdout.write(chunk)
-//        body += chunk;
-//      });
-//      res.on('end', function() {
-////        process.stdout.write(body)
-//        var object = JSON.parse(body);
-//        assert.notEqual(typeof(object.error), 'undefined');
-//      });
-//    });
-//
-//    req.write(postData);
-//    req.end();
-//  });
+  it('should not add an invalid element with no url', function() {
+    var postData = JSON.stringify({
+      name: 'test',
+      url: ''
+    });
+
+    var options = {
+      hostname: '127.0.0.1',
+      port: 3003,
+      path: '/api/checks',
+      method: 'PUT',
+      headers: {
+        'Content-Length': postData.length,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    };
+
+    var req = http.request(options, function(res) {
+      res.setEncoding('utf8');
+      var body = '';
+
+      res.on('data', function(chunk) {
+        process.stdout.write(chunk)
+        body += chunk;
+      });
+      res.on('end', function() {
+//        process.stdout.write(body)
+        var object = JSON.parse(body);
+        assert.notEqual(typeof(object.error), 'undefined');
+      });
+    });
+
+    req.write(postData);
+    req.end();
+  });
 
   after(function() {
     Check.remove({});
@@ -242,40 +211,40 @@ describe('POST /checks/:id', function() {
     check2.save();
   });
 
-  it('should return error if id parameter does not exists', function(done) {
-
-    var postData = JSON.stringify({
-      name: 'test'
-    });
-
-    var options = {
-      hostname: '127.0.0.1',
-      port: 3003,
-      path: '/api/checks/toto',
-      method: 'POST',
-      headers: {
-        'Content-Length': postData.length,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    };
-
-    var req = http.request(options, function(res) {
-      res.setEncoding('utf8');
-      var body = '';
-
-      res.on('data', function(chunk) {
-        body += chunk;
-      });
-      res.on('end', function() {
-        var object = JSON.parse(body);
-        assert.notEqual(typeof(object.error), 'undefined');
-      });
-    });
-
-    req.write(postData);
-    req.end();
-  });
+//  it('should return error if id parameter does not exists', function(done) {
+//
+//    var postData = JSON.stringify({
+//      name: 'test'
+//    });
+//
+//    var options = {
+//      hostname: '127.0.0.1',
+//      port: 3003,
+//      path: '/api/checks/toto',
+//      method: 'POST',
+//      headers: {
+//        'Content-Length': postData.length,
+//        'Content-Type': 'application/json',
+//        'Accept': 'application/json'
+//      }
+//    };
+//
+//    var req = http.request(options, function(res) {
+//      res.setEncoding('utf8');
+//      var body = '';
+//
+//      res.on('data', function(chunk) {
+//        body += chunk;
+//      });
+//      res.on('end', function() {
+//        var object = JSON.parse(body);
+//        assert.notEqual(typeof(object.error), 'undefined');
+//      });
+//    });
+//
+//    req.write(postData);
+//    req.end();
+//  });
 
   it('should update object if parameters are valid', function() {
 
