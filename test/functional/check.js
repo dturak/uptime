@@ -97,25 +97,11 @@ describe('GET /checks', function() {
 
 describe('PUT /checks', function() {
 
-  before(function() {
-    this.enableTimeouts(false)
-    pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3000);
+  before(function(done) {
+    this.server = app.listen(3003, done);
   });
 
-  beforeEach(function() {
-    check1 = new Check();
-    check1.url = 'http://www.url1.fr';
-    check1.name = 'name1';
-    check1.isPaused = false;
-//    check1.save(done);
-
-    check2 = new Check();
-    check2.url = 'http://www.url2.fr';
-    check2.isPaused = false;
-  });
-
-  it('should add a new valid element', function() {
+  it('should add a new valid element', function(done) {
 
     var postData = JSON.stringify({
       name: 'test',
@@ -124,7 +110,7 @@ describe('PUT /checks', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3000,
+      port: 3003,
       path: '/api/checks',
       method: 'PUT',
       headers: {
@@ -161,7 +147,7 @@ describe('PUT /checks', function() {
     req.end();
   });
 
-  it('should add a new element with url as name if name is empty', function() {
+  it('should add a new element with url as name if name is empty', function(done) {
     var postData = JSON.stringify({
       name: '',
       url:'http://mynewurl.test'
@@ -169,7 +155,7 @@ describe('PUT /checks', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3000,
+      port: 3003,
       path: '/api/checks',
       method: 'PUT',
       headers: {
@@ -240,12 +226,12 @@ describe('PUT /checks', function() {
 //    req.end();
 //  });
 
-//  after(function(done) {
-//    Check.remove({}, done);
-//  });
+  after(function(done) {
+    Check.remove({}, done);
+  });
 
-  after(function() {
-    this.server.close();
+  after(function(done) {
+    this.server.close(done);
   });
 });
 //
