@@ -247,7 +247,7 @@ describe('POST /checks/:id', function() {
     req.end();
   });
 
-  it('should update object if parameters are valid', function(done) {
+  it('should update object if parameters are valid', function() {
 
     var postData = JSON.stringify({
       name: 'test',
@@ -273,7 +273,7 @@ describe('POST /checks/:id', function() {
       res.on('data', function(chunk) {
         body += chunk;
       });
-      res.on('end', function(done) {
+      res.on('end', function() {
         var object = JSON.parse(body);
         assert.equal(object.name, 'test');
         assert.equal(object.url, 'http://newurl.test');
