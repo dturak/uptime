@@ -1,3 +1,7 @@
+url: 'http://localhost:3003'
+port: 3003
+debug: false
+
 mongodb:
   connectionString: mongodb://127.0.0.1/uptime
 
