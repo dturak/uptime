@@ -103,6 +103,18 @@ describe('PUT /checks', function() {
     this.server = app.listen(3000);
   });
 
+  beforeEach(function() {
+    check1 = new Check();
+    check1.url = 'http://www.url1.fr';
+    check1.name = 'name1';
+    check1.isPaused = false;
+//    check1.save(done);
+
+    check2 = new Check();
+    check2.url = 'http://www.url2.fr';
+    check2.isPaused = false;
+  });
+
   it('should add a new valid element', function() {
 
     var postData = JSON.stringify({
