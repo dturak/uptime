@@ -235,11 +235,10 @@ describe('POST /checks/:id', function() {
       res.on('data', function(chunk) {
         body += chunk;
       });
-      res.on('end', function(done) {
+      res.on('end', function() {
 //        var object = JSON.parse(body);
 //        assert.notEqual(typeof(object.error), 'undefined');
         assert.notEqual(typeof(body), 'undefined');
-        done();
       });
     });
 
@@ -325,7 +324,7 @@ describe('POST /checks/:id', function() {
     this.server.close();
   });
 
-  after(function(done) {
+  after(function(res) {
     Check.remove({});
     this.server.close();
   });
