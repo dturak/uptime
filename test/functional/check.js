@@ -55,7 +55,7 @@ describe('GET /checks', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3003,
+      port: 3000,
       path: '/api/checks',
       headers: {
         'Accept': 'application/json'
