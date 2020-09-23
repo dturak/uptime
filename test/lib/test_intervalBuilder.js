@@ -144,11 +144,11 @@ describe('intervalBuilder', function() {
     });
   });
   
-//  after(function(done) {
-//    async.parallel([
-//      function(cb) { Ping.collection.remove({ }, cb) },
-//      function(cb) { Check.collection.remove({ }, cb) },
-//      function(cb) { CheckEvent.collection.remove({ }, cb) },
-//    ], done);
-//  });
+  after(function(done) {
+    async.parallel([
+      function(cb) { Ping.collection.remove({ }, cb) },
+      function(cb) { Check.collection.remove({ }, cb) },
+      function(cb) { CheckEvent.collection.remove({ }, cb) },
+    ], done);
+  });
 });
