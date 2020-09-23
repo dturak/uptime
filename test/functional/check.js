@@ -224,6 +224,7 @@ describe('POST /checks/:id', function() {
   var check1, check2, pollerCollection; // fixtures
 
   before(function() {
+    this.enableTimeouts(false)
     pollerCollection = app.get('pollerCollection');
     this.server = app.listen(3003);
   });
