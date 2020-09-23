@@ -10,6 +10,6 @@ before_script:
 #  - sudo service mongod start
 #  - sudo mongod
 script:
-  - npm test
+  - npm test --detectOpenHandles
 after_success:
   - npm run coverage
