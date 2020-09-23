@@ -21,7 +21,7 @@ describe('GET /checks', function() {
   before(function() {
     this.enableTimeouts(false)
     pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3003, done);
+    this.server = app.listen(3003);
   });
 
   beforeEach(function() {
@@ -90,6 +90,9 @@ describe('GET /checks', function() {
 //  after(function(done) {
 //    this.server.close(done);
 //  });
+  after(function() {
+    this.server.close();
+  });
 });
 
 //describe('PUT /checks', function() {
