@@ -210,7 +210,7 @@ describe('POST /checks/:id', function() {
   });
 
 //this one works but causes the process to continue for some reason
-  it('should return error if id parameter does not exists', function(done) {
+  it('should return error if id parameter does not exists', function() {
 
     var postData = JSON.stringify({
       name: 'test'
@@ -244,7 +244,6 @@ describe('POST /checks/:id', function() {
 
     req.write(postData);
     req.end();
-    done();
   });
 
   it('should update object if parameters are valid', function() {
@@ -325,7 +324,7 @@ describe('POST /checks/:id', function() {
     this.server.close();
   });
 
-  after(function(done) {
+  after(function(req) {
     Check.remove({});
     this.server.close();
   });
