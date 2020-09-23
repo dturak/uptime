@@ -76,10 +76,10 @@ describe('GET /checks', function() {
 
 describe('PUT /checks', function() {
 
-  before(function(done) {
-    pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3003, done);
-  });
+//  before(function(done) {
+//    pollerCollection = app.get('pollerCollection');
+//    this.server = app.listen(3003, done);
+//  });
 
   it('should add a new valid element', function(done) {
 
@@ -219,10 +219,10 @@ describe('POST /checks/:id', function() {
 
   var check1, check2, pollerCollection; // fixtures
 
-  before(function(done) {
-    pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3003, done);
-  });
+//  before(function(done) {
+//    pollerCollection = app.get('pollerCollection');
+//    this.server = app.listen(3003, done);
+//  });
 
   before(function(done) {
     check1 = new Check();
