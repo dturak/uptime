@@ -248,6 +248,7 @@ describe('POST /checks/:id', function() {
 
     req.write(postData);
     req.end();
+    this.server.close();
   });
 
   it('should update object if parameters are valid', function() {
@@ -285,7 +286,6 @@ describe('POST /checks/:id', function() {
 
     req.write(postData);
     req.end();
-    this.server.close();
   });
 
   it('should not throw error if called twice on same id', function() {
