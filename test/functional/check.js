@@ -210,7 +210,7 @@ describe('POST /checks/:id', function() {
   });
 
 //this one works but causes the process to continue for some reason
-  it('should return error if id parameter does not exists', function() {
+  it('should return error if id parameter does not exists', function(done) {
 
     var postData = JSON.stringify({
       name: 'test'
