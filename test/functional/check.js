@@ -11,7 +11,7 @@ describe('GET /checks', function() {
 
   before(function(done) {
     pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3003, done);
+//    this.server = app.listen(3003, done);
   });
 
   before(function(done) {
@@ -69,9 +69,9 @@ describe('GET /checks', function() {
     Check.remove({}, done);
   });
 
-  after(function(done) {
-    this.server.close(done);
-  });
+//  after(function(done) {
+//    this.server.close(done);
+//  });
 });
 
 describe('PUT /checks', function() {
@@ -210,9 +210,9 @@ describe('PUT /checks', function() {
     Check.remove({}, done);
   });
 
-  after(function(done) {
-    this.server.close(done);
-  });
+//  after(function(done) {
+//    this.server.close(done);
+//  });
 });
 
 describe('POST /checks/:id', function() {
@@ -366,7 +366,7 @@ describe('POST /checks/:id', function() {
     Check.remove({}, done);
   });
 
-  after(function(done) {
-    this.server.close(done);
-  });
+//  after(function(done) {
+//    this.server.close(done);
+//  });
 });
