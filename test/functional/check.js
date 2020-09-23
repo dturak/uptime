@@ -245,6 +245,7 @@ describe('PUT /checks', function() {
 //  });
 
   after(function() {
+    Check.remove({});
     this.server.close();
   });
 });
