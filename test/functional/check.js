@@ -239,6 +239,7 @@ describe('POST /checks/:id', function() {
 //        var object = JSON.parse(body);
 //        assert.notEqual(typeof(object.error), 'undefined');
         assert.notEqual(typeof(body), 'undefined');
+        done();
       });
     });
 
