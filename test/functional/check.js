@@ -277,8 +277,8 @@ describe('POST /checks/:id', function() {
     req.write(postData);
     req.end();
   });
-//
-//  it('should update object if parameters are valid', function(done) {
+
+//  it('should update object if parameters are valid', function() {
 //
 //    var postData = JSON.stringify({
 //      name: 'test',
@@ -308,19 +308,14 @@ describe('POST /checks/:id', function() {
 //        var object = JSON.parse(body);
 //        assert.equal(object.name, 'test');
 //        assert.equal(object.url, 'http://newurl.test');
-//        done();
 //      });
-//    });
-//
-//    req.on('error', function(e) {
-//      done(new Error('Error on PUT request'))
 //    });
 //
 //    req.write(postData);
 //    req.end();
 //  });
 //
-//  it('should not throw error if called twice on same id', function(done) {
+//  it('should not throw error if called twice on same id', function() {
 //    var postData = JSON.stringify({
 //      name: 'test',
 //      url:'http://newurl.test'
@@ -349,23 +344,15 @@ describe('POST /checks/:id', function() {
 //        var object = JSON.parse(body);
 //        assert.equal(typeof(object.error), 'undefined');
 //        assert.notEqual(typeof(object.name), 'undefined');
-//        done();
 //      });
-//    });
-//
-//    req.on('error', function(e) {
-//      done(new Error('Error on PUT request'))
 //    });
 //
 //    req.write(postData);
 //    req.end();
 //  });
 //
-//  after(function(done) {
-//    Check.remove({}, done);
-//  });
-//
-//  after(function(done) {
-//    this.server.close(done);
-//  });
-//});
+  after(function() {
+    Check.remove({});
+    this.server.close();
+  });
+});
