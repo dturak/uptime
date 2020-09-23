@@ -178,7 +178,8 @@ describe('PUT /checks', function() {
 
   it('should not add an invalid element with no url', function() {
     var postData = JSON.stringify({
-      name: 'test'
+      name: 'test',
+      url: ''
     });
 
     var options = {
