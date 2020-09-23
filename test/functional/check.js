@@ -1,9 +1,9 @@
 process.env.NODE_ENV = 'test';
-var mongoose = require('../../bootstrap');
+//var mongoose = require('../../bootstrap');
 //var Check = require('../../models/check');
-var app = require('../../app');
-var assert = require('assert');
-var http = require('http');
+//var app = require('../../app');
+//var assert = require('assert');
+//var http = require('http');
 
 describe('GET /checks', function() {
 
