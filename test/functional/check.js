@@ -73,15 +73,10 @@ describe('GET /checks', function() {
       res.on('end', function(){
         content = JSON.parse(body);
         assert.equal(content.length, 2);
-        done();
       });
     });
 
     req.end();
-
-    req.on('error', function(e) {
-      done(new Error('Error on GET request'))
-    });
   });
 
 //  after(function(done) {
