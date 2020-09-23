@@ -11,7 +11,7 @@ describe('GET /checks', function() {
 
   before(function(done) {
     pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3000, done);
+    this.server = app.listen(3003, done);
   });
 
   before(function(done) {
@@ -37,7 +37,7 @@ describe('GET /checks', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3000,
+      port: 3003,
       path: '/api/checks',
       headers: {
         'Accept': 'application/json'
@@ -78,7 +78,7 @@ describe('PUT /checks', function() {
 
   before(function(done) {
     pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3000, done);
+    this.server = app.listen(3003, done);
   });
 
   it('should add a new valid element', function(done) {
@@ -90,7 +90,7 @@ describe('PUT /checks', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3000,
+      port: 3003,
       path: '/api/checks',
       method: 'PUT',
       headers: {
@@ -135,7 +135,7 @@ describe('PUT /checks', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3000,
+      port: 3003,
       path: '/api/checks',
       method: 'PUT',
       headers: {
@@ -174,7 +174,7 @@ describe('PUT /checks', function() {
 //
 //    var options = {
 //      hostname: '127.0.0.1',
-//      port: 3000,
+//      port: 3003,
 //      path: '/api/checks',
 //      method: 'PUT',
 //      headers: {
@@ -221,7 +221,7 @@ describe('POST /checks/:id', function() {
 
   before(function(done) {
     pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3000, done);
+    this.server = app.listen(3003, done);
   });
 
   before(function(done) {
@@ -247,7 +247,7 @@ describe('POST /checks/:id', function() {
 //
 //    var options = {
 //      hostname: '127.0.0.1',
-//      port: 3000,
+//      port: 3003,
 //      path: '/api/checks/toto',
 //      method: 'POST',
 //      headers: {
@@ -288,7 +288,7 @@ describe('POST /checks/:id', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3000,
+      port: 3003,
       path: '/api/checks/' + check1.id,
       method: 'POST',
       headers: {
@@ -329,7 +329,7 @@ describe('POST /checks/:id', function() {
 
     var options = {
       hostname: '127.0.0.1',
-      port: 3000,
+      port: 3003,
       path: '/api/checks/' + check1.id,
       method: 'POST',
       headers: {
