@@ -21,7 +21,7 @@ describe('GET /checks', function() {
   before(function() {
     this.enableTimeouts(false)
     pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3003);
+    this.server = app.listen(3000);
   });
 
   beforeEach(function() {
