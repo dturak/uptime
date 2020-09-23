@@ -115,7 +115,7 @@ describe('PUT /checks', function() {
 //    check2.isPaused = false;
 //  });
 
-  it('should add a new valid element', function() {
+  it('should add a new valid element', function(done) {
 
     var postData = JSON.stringify({
       name: 'test',
