@@ -214,41 +214,41 @@ describe('POST /checks/:id', function() {
   });
 
 //this one
-  it('should return error if id parameter does not exists', function() {
-
-    var postData = JSON.stringify({
-      name: 'test'
-    });
-
-    var options = {
-      hostname: 'localhost',
-      port: 3003,
-      path: '/api/checks/toto',
-      method: 'POST',
-      headers: {
-        'Content-Length': postData.length,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    };
-
-    var req = http.request(options, function(res) {
-      res.setEncoding('utf8');
-      var body = '';
-
-      res.on('data', function(chunk) {
-        body += chunk;
-      });
-      res.on('end', function() {
-//        var object = JSON.parse(body);
-//        assert.notEqual(typeof(object.error), 'undefined');
-        assert.notEqual(typeof(body), 'undefined');
-      });
-    });
-
-    req.write(postData);
-    req.end();
-  });
+//  it('should return error if id parameter does not exists', function() {
+//
+//    var postData = JSON.stringify({
+//      name: 'test'
+//    });
+//
+//    var options = {
+//      hostname: 'localhost',
+//      port: 3003,
+//      path: '/api/checks/toto',
+//      method: 'POST',
+//      headers: {
+//        'Content-Length': postData.length,
+//        'Content-Type': 'application/json',
+//        'Accept': 'application/json'
+//      }
+//    };
+//
+//    var req = http.request(options, function(res) {
+//      res.setEncoding('utf8');
+//      var body = '';
+//
+//      res.on('data', function(chunk) {
+//        body += chunk;
+//      });
+//      res.on('end', function() {
+////        var object = JSON.parse(body);
+////        assert.notEqual(typeof(object.error), 'undefined');
+//        assert.notEqual(typeof(body), 'undefined');
+//      });
+//    });
+//
+//    req.write(postData);
+//    req.end();
+//  });
 
   it('should update object if parameters are valid', function() {
 
