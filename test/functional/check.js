@@ -34,7 +34,7 @@ describe('GET /checks', function() {
     check2 = new Check();
     check2.url = 'http://www.url2.fr';
     check2.isPaused = false;
-    check1.save();
+    check2.save();
   });
 
 //  before(function(done) {
