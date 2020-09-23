@@ -164,17 +164,13 @@ describe('PUT /checks', function() {
     };
 
     var req = http.request(options, function(res) {
-      process.stdout.write(String(res.data))
       res.setEncoding('utf8');
-      process.stdout.write(String(res.data))
       var body = '';
 
       res.on('data', function(chunk) {
-//        process.stdout.write(chunk)
         body += chunk;
       });
       res.on('end', function() {
-//        process.stdout.write(body)
 //        var object = JSON.parse(body);
         assert.notEqual(typeof(body), 'undefined');
       });
