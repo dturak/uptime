@@ -19,6 +19,7 @@ describe('GET /checks', function() {
 //  });
 
   before(function() {
+    this.enableTimeouts(false)
     pollerCollection = new PollerCollection();
   });
 
