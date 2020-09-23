@@ -1,14 +1,2 @@
-url: 'http://localhost:3003'
-port: 3003
-debug: false
-
 mongodb:
   connectionString: mongodb://127.0.0.1/uptime
-
-monitor:
-  name:                   origin
-  apiUrl:                 'http://localhost:3003/api' # must be accessible without a proxy
-  pollingInterval:        10000      # ten seconds
-  timeout:                5000       # five seconds
-  userAgent:              NodeUptime/3.0 (https://github.com/fzaninotto/uptime)
-  debug:                  false

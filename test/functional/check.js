@@ -9,29 +9,45 @@ describe('GET /checks', function() {
 
   var check1, check2, pollerCollection; // fixtures
 
-  before(function(done) {
-    pollerCollection = app.get('pollerCollection');
+//  before(function(done) {
+//    pollerCollection = app.get('pollerCollection');
 //    this.server = app.listen(3003, done);
+//  });
+
+//  before(function(done) {
+//    Check.remove({}, done);
+//  });
+
+  before(function() {
+    pollerCollection = new PollerCollection();
   });
 
-  before(function(done) {
-    Check.remove({}, done);
-  });
-
-  before(function(done) {
+  beforeEach(function() {
     check1 = new Check();
     check1.url = 'http://www.url1.fr';
     check1.name = 'name1';
     check1.isPaused = false;
-    check1.save(done);
-  });
+//    check1.save(done);
 
-  before(function(done) {
     check2 = new Check();
     check2.url = 'http://www.url2.fr';
     check2.isPaused = false;
-    check2.save(done);
   });
+
+//  before(function(done) {
+//    check1 = new Check();
+//    check1.url = 'http://www.url1.fr';
+//    check1.name = 'name1';
+//    check1.isPaused = false;
+//    check1.save(done);
+//  });
+//
+//  before(function(done) {
+//    check2 = new Check();
+//    check2.url = 'http://www.url2.fr';
+//    check2.isPaused = false;
+//    check2.save(done);
+//  });
 
   it('should fetch all elements', function(done) {
 
@@ -65,10 +81,10 @@ describe('GET /checks', function() {
     });
   });
 
-  after(function(done) {
-    Check.remove({}, done);
-  });
-
+//  after(function(done) {
+//    Check.remove({}, done);
+//  });
+//
 //  after(function(done) {
 //    this.server.close(done);
 //  });
