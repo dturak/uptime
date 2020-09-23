@@ -314,43 +314,43 @@ describe('POST /checks/:id', function() {
     req.write(postData);
     req.end();
   });
-//
-//  it('should not throw error if called twice on same id', function() {
-//    var postData = JSON.stringify({
-//      name: 'test',
-//      url:'http://newurl.test'
-//    });
-//
-//    var options = {
-//      hostname: '127.0.0.1',
-//      port: 3003,
-//      path: '/api/checks/' + check1.id,
-//      method: 'POST',
-//      headers: {
-//        'Content-Length': postData.length,
-//        'Content-Type': 'application/json',
-//        'Accept': 'application/json'
-//      }
-//    };
-//
-//    var req = http.request(options, function(res) {
-//      res.setEncoding('utf8');
-//      var body = '';
-//
-//      res.on('data', function(chunk) {
-//        body += chunk;
-//      });
-//      res.on('end', function() {
-//        var object = JSON.parse(body);
-//        assert.equal(typeof(object.error), 'undefined');
-//        assert.notEqual(typeof(object.name), 'undefined');
-//      });
-//    });
-//
-//    req.write(postData);
-//    req.end();
-//  });
-//
+
+  it('should not throw error if called twice on same id', function() {
+    var postData = JSON.stringify({
+      name: 'test',
+      url:'http://newurl.test'
+    });
+
+    var options = {
+      hostname: '127.0.0.1',
+      port: 3003,
+      path: '/api/checks/' + check1.id,
+      method: 'POST',
+      headers: {
+        'Content-Length': postData.length,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    };
+
+    var req = http.request(options, function(res) {
+      res.setEncoding('utf8');
+      var body = '';
+
+      res.on('data', function(chunk) {
+        body += chunk;
+      });
+      res.on('end', function() {
+        var object = JSON.parse(body);
+        assert.equal(typeof(object.error), 'undefined');
+        assert.notEqual(typeof(object.name), 'undefined');
+      });
+    });
+
+    req.write(postData);
+    req.end();
+  });
+
   after(function() {
     Check.remove({});
     this.server.close();
