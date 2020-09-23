@@ -115,7 +115,7 @@ describe('PUT /checks', function() {
 //    check2.isPaused = false;
 //  });
 
-  it('should add a new valid element', function(done) {
+  it('should add a new valid element', function() {
 
     var postData = JSON.stringify({
       name: 'test',
@@ -141,7 +141,7 @@ describe('PUT /checks', function() {
       res.on('data', function(chunk) {
         body += chunk;
       });
-      res.on('end', function(done) {
+      res.on('end', function() {
         var object = JSON.parse(body);
         Check.findOne({ _id : object._id }, function(error, document) {
           if (error) {return done(new Error('Error, object not found'))}
