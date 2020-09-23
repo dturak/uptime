@@ -10,6 +10,6 @@ before_script:
 #  - sudo service mongod start
 #  - sudo mongod
 script:
-  - yarn test
+  - yarn test --forceExit
 after_success:
   - npm run coverage
