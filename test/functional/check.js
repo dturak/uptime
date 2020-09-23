@@ -51,7 +51,7 @@ describe('GET /checks', function() {
 //    check2.save(done);
 //  });
 
-  it('should fetch all elements', function(done) {
+  it('should fetch all elements', function() {
 
     var options = {
       hostname: '127.0.0.1',
