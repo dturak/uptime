@@ -164,9 +164,9 @@ describe('PUT /checks', function() {
     };
 
     var req = http.request(options, function(res) {
-      process.stdout.write(res)
+      process.stdout.write(res.data)
       res.setEncoding('utf8');
-      process.stdout.write(res)
+      process.stdout.write(res.data)
       var body = '';
 
       res.on('data', function(chunk) {
