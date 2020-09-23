@@ -31,7 +31,7 @@ describe('GET /checks', function() {
   it('should fetch all elements', function() {
 
     var options = {
-      hostname: '127.0.0.1',
+      hostname: 'localhost',
       port: 3003,
       path: '/api/checks',
       headers: {
@@ -76,7 +76,7 @@ describe('PUT /checks', function() {
     });
 
     var options = {
-      hostname: '127.0.0.1',
+      hostname: 'localhost',
       port: 3003,
       path: '/api/checks',
       method: 'PUT',
@@ -117,7 +117,7 @@ describe('PUT /checks', function() {
     });
 
     var options = {
-      hostname: '127.0.0.1',
+      hostname: 'localhost',
       port: 3003,
       path: '/api/checks',
       method: 'PUT',
@@ -152,7 +152,7 @@ describe('PUT /checks', function() {
     });
 
     var options = {
-      hostname: '127.0.0.1',
+      hostname: 'localhost',
       port: 3003,
       path: '/api/checks',
       method: 'PUT',
@@ -220,7 +220,7 @@ describe('POST /checks/:id', function() {
 //    });
 //
 //    var options = {
-//      hostname: '127.0.0.1',
+//      hostname: 'localhost',
 //      port: 3003,
 //      path: '/api/checks/toto',
 //      method: 'POST',
@@ -256,7 +256,7 @@ describe('POST /checks/:id', function() {
     });
 
     var options = {
-      hostname: '127.0.0.1',
+      hostname: 'localhost',
       port: 3003,
       path: '/api/checks/' + check1.id,
       method: 'POST',
@@ -292,7 +292,7 @@ describe('POST /checks/:id', function() {
     });
 
     var options = {
-      hostname: '127.0.0.1',
+      hostname: 'localhost',
       port: 3003,
       path: '/api/checks/' + check1.id,
       method: 'POST',
