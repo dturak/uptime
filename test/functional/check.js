@@ -20,7 +20,7 @@ describe('GET /checks', function() {
 
   before(function() {
     this.enableTimeouts(false)
-    pollerCollection = new PollerCollection();
+    pollerCollection = app.get('pollerCollection');
   });
 
   beforeEach(function() {
