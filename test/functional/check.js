@@ -154,7 +154,7 @@ describe('PUT /checks', function() {
     });
 
     req.on('error', function(e) {
-      done(new Error('Error on PUT request'))
+      done(new Error('Error on PUT request' + e))
     });
 
     req.write(postData);
