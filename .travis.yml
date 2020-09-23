@@ -5,11 +5,11 @@ services:
   - mongodb
 install:
   - npm install
-before_script:
-  - NODE_ENV=test node app &
+#before_script:
+#  - NODE_ENV=test node app &
 #  - sudo service mongod start
 #  - sudo mongod
 script:
-  - npm test --detectOpenHandles
+  - npm test
 after_success:
   - npm run coverage
