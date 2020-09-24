@@ -50,7 +50,7 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "test": "nyc mocha 'test/*/*.js' --retries 2 --exit",
+    "test": "nyc mocha 'test/*/*.js' --package package.json --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start": "node app.js"
   },
