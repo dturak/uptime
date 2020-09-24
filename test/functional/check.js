@@ -9,10 +9,14 @@ describe('GET /checks', function() {
 
   var check1, check2, pollerCollection; // fixtures
 
-  before(function() {
+  before(function(done) {
     this.enableTimeouts(false)
     pollerCollection = app.get('pollerCollection');
-    this.server = app.listen(3003);
+    this.server = app.listen(3003, done);
+  });
+
+  before(function(done) {
+    Check.remove({}, done);
   });
 
   before(function(done) {
@@ -20,13 +24,14 @@ describe('GET /checks', function() {
     check1.url = 'http://www.url1.fr';
     check1.name = 'name1';
     check1.isPaused = false;
-    check1.save();
+    check1.save(done);
+  });
 
+  before(function(done) {
     check2 = new Check();
     check2.url = 'http://www.url2.fr';
     check2.isPaused = false;
-    check2.save();
-    done();
+    check2.save(done);
   });
 
   it('should fetch all elements', function(done) {
@@ -50,11 +55,11 @@ describe('GET /checks', function() {
       res.on('end', function(){
         content = JSON.parse(body);
         assert.equal(content.length, 2);
+        done();
       });
     });
 
     req.end();
-    done();
   });
 
   after(function(done) {
