@@ -15,13 +15,13 @@ describe('GET /checks', function() {
 
   var check1, check2, pollerCollection; // fixtures
 
-  before(function() {
+  before(function(done) {
     this.enableTimeouts(false)
     pollerCollection = app.get('pollerCollection');
     this.server = app.listen(3003);
   });
 
-  beforeEach(function() {
+  before(function() {
     check1 = new Check();
     check1.url = 'http://www.url1.fr';
     check1.name = 'name1';
