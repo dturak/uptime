@@ -50,8 +50,21 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "test": "nyc mocha 'test/*/*.js' --allow-uncaught --retries 2 --exit",
+    "test": "nyc mocha 'test/*/*.js' --package package.json --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start": "node app.js"
+  },
+  "mocha": {
+    "diff": true,
+    "extension": [
+      "js"
+    ],
+    "opts": "./test/mocha.opts",
+    "package": "./package.json",
+    "reporter": "spec",
+    "slow": 20,
+    "timeout": 2000,
+    "ui": "bdd",
+    "retries": 2
   }
 }
