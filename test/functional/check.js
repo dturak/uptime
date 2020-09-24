@@ -5,6 +5,11 @@ var app = require('../../app');
 var assert = require('assert');
 var http = require('http');
 
+exports.mochaHooks = {
+    afterAll() {
+      this.server.close();
+    }
+};
 
 describe('GET /checks', function() {
 
