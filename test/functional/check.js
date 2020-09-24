@@ -55,6 +55,10 @@ describe('GET /checks', function() {
     req.end();
   });
 
+  afterEach(function() {
+    Check.remove({});
+  });
+
   after(function() {
     this.server.close();
   });
@@ -179,7 +183,7 @@ describe('PUT /checks', function() {
   });
 
   after(function() {
-    Check.remove({});
+//    Check.remove({});
     this.server.close();
   });
 });
@@ -317,8 +321,11 @@ describe('POST /checks/:id', function() {
     req.end();
   });
 
-  after(function() {
+  afterEach(function() {
     Check.remove({});
+  });
+
+  after(function() {
     this.server.close();
   });
 });
