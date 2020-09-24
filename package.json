@@ -64,6 +64,7 @@
     "reporter": "spec",
     "slow": 20,
     "timeout": 2000,
-    "ui": "bdd"
+    "ui": "bdd",
+    "retries": 2
   }
 }
