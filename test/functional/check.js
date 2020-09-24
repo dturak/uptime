@@ -58,7 +58,7 @@ describe('GET /checks', function() {
   });
 
   after(function(done) {
-    Check.remove({});
+    Check.remove({}, done);
     this.server.close();
   });
 });
@@ -320,11 +320,12 @@ describe('POST /checks/:id', function() {
     req.end();
   });
 
-  afterEach(function() {
-    Check.remove({});
-  });
+//  afterEach(function() {
+//    Check.remove({});
+//  });
 
   after(function() {
+    Check.remove({});
     this.server.close();
   });
 });
