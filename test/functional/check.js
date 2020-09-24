@@ -5,11 +5,11 @@ var app = require('../../app');
 var assert = require('assert');
 var http = require('http');
 
-exports.mochaHooks = {
-    afterAll() {
-      this.server.close();
-    }
-};
+//exports.mochaHooks = {
+//    afterAll() {
+//      this.server.close();
+//    }
+//};
 
 describe('GET /checks', function() {
 
@@ -27,11 +27,13 @@ describe('GET /checks', function() {
     check1.name = 'name1';
     check1.isPaused = false;
     check1.save();
+    done();
 
     check2 = new Check();
     check2.url = 'http://www.url2.fr';
     check2.isPaused = false;
     check2.save();
+    done();
   });
 
   it('should fetch all elements', function(done) {
