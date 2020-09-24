@@ -5,12 +5,6 @@ var app = require('../../app');
 var assert = require('assert');
 var http = require('http');
 
-//exports.mochaHooks = {
-//    afterAll() {
-//      this.server.close();
-//    }
-//};
-
 describe('GET /checks', function() {
 
   var check1, check2, pollerCollection; // fixtures
@@ -21,7 +15,7 @@ describe('GET /checks', function() {
     this.server = app.listen(3003);
   });
 
-  before(function(res) {
+  before(function(done) {
     check1 = new Check();
     check1.url = 'http://www.url1.fr';
     check1.name = 'name1';
