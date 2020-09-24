@@ -34,7 +34,7 @@ describe('GET /checks', function() {
     check2.save();
   });
 
-  it('should fetch all elements', function() {
+  it('should fetch all elements', function(done) {
 
     var options = {
       hostname: 'localhost',
@@ -59,9 +59,10 @@ describe('GET /checks', function() {
     });
 
     req.end();
+    done();
   });
 
-  after(function() {
+  after(function(done) {
     Check.remove({});
     this.server.close();
   });
