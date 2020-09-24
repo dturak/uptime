@@ -6,14 +6,6 @@ var assert = require('assert');
 var http = require('http');
 
 
-afterAll() {
-    // skip all tests for bob
-    if (require('os').userInfo().username === 'bob') {
-      this.server.close();
-    }
-};
-
-
 describe('GET /checks', function() {
 
   var check1, check2, pollerCollection; // fixtures
