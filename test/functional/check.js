@@ -61,11 +61,8 @@ describe('GET /checks', function() {
     req.end();
   });
 
-  afterEach(function() {
-    Check.remove({});
-  });
-
   after(function() {
+    Check.remove({});
     this.server.close();
   });
 });
