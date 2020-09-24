@@ -50,8 +50,18 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "test": "nyc mocha 'test/*/*.js' --require test/rootHooks.js",
+    "test": "nyc mocha 'test/*/*.js'",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start": "node app.js"
+  },
+  "mocha": {
+    "diff": true,
+    "extension": ["js"],
+    "opts": "./test/mocha.opts",
+    "package": "./package.json",
+    "reporter": "spec",
+    "slow": 20,
+    "timeout": 2000,
+    "ui": "bdd"
   }
 }
