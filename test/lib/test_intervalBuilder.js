@@ -1,13 +1,13 @@
-var should = require('should');
-var async = require('async');
-var mongoose = require('../../bootstrap');
-var IntervalBuilder = require('../../lib/intervalBuilder');
-var Ping = require('../../models/ping');
-var Check = require('../../models/check');
-var CheckEvent = require('../../models/checkEvent');
-
-var check1, check2, now; // fixtures
-
+//var should = require('should');
+//var async = require('async');
+//var mongoose = require('../../bootstrap');
+//var IntervalBuilder = require('../../lib/intervalBuilder');
+//var Ping = require('../../models/ping');
+//var Check = require('../../models/check');
+//var CheckEvent = require('../../models/checkEvent');
+//
+//var check1, check2, now; // fixtures
+//
 //describe('intervalBuilder', function() {
 //
 //  before(function(done) {
