@@ -9,9 +9,6 @@ WORKDIR /app
 # Install Uptime
 RUN npm install
 
-#RUN node test
-RUN yarn test
-
 # Make port 2121 available to the world outside this container
 EXPOSE 3003
 
