@@ -180,7 +180,6 @@ describe('intervalBuilder', function() {
         async.series([
           function(cb) { Ping.createForCheck({ status: false, timestamp: now - 2000, time: 100, check: check1, monitorName: 'dummy2', error: '', details: null, callback: cb}); },
           function(cb) { Ping.createForCheck({ status: true, timestamp: now - 1000, time: 100, check: check1, monitorName: 'dummy3', error: '', details: null, callback: cb}); }
-          function(cb) { Ping.createForCheck(false, 200, now - 2000, 100, check1, 'dummy2', '', null, cb); },
         ], done);
       });
     });
