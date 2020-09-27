@@ -31,6 +31,8 @@ Ping.methods.setDetails = function(details) {
 };
 
 Ping.statics.createForCheck = function({ status, statusCode, timestamp, time, check, monitorName, error, errorCode, details, callback }) {
+  console.log("check one two check:")
+  console.log(check)
   timestamp = timestamp || new Date();
   timestamp = timestamp instanceof Date ? timestamp : new Date(parseInt(timestamp, 10));
 
