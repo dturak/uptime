@@ -149,10 +149,10 @@ describe('intervalBuilder', function() {
       builder.addTarget(2);
       builder.addTarget(3);
       builder.addTarget(4);
-      builder.changeObjectState(1, 'paused');
+      builder.changeObjectState(1, 'restared');
       builder.changeObjectState(2, 'paused');
       builder.changeObjectState(3, 'paused');
-      builder.changeObjectState(4, 'paused');
+      builder.changeObjectState(4, 'restarted');
       builder.getGlobalState().should.eql(builder.PAUSED);
     });
 
