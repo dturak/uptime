@@ -175,6 +175,8 @@ describe('intervalBuilder', function() {
 
     before(function(done) {
       check1 = new Check();
+      console.log("check1:")
+      console.log(check1)
       check1.save(function(err) {
         if (err) throw (err);
         async.series([
