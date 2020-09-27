@@ -55,11 +55,13 @@ Ping.statics.createForCheck = function({ status, statusCode, timestamp, time, ch
   }
 
   ping.time = time;
+  console.log("before ping.check")
   ping.check = check;
+  console.log("before check.tags")
   if (check.tags) {
     ping.tags = check.tags;
   } else {
-    ping.tags = []
+    ping.tags = [""]
   }
   ping.monitorName = monitorName;
   if (!status) {
