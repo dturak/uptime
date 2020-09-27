@@ -175,14 +175,12 @@ describe('intervalBuilder', function() {
 
     before(function(done) {
       check1 = new Check();
-      console.log("check1:")
-      console.log(check1)
       check1.save(function(err) {
         if (err) throw (err);
         async.series([
-        console.log("do we even get here?")
+          function(cb) { Ping.createForCheck({ status: false, timestamp: now - 2000, time: 100, check: check1, monitorName: 'dummy2', error: '', details: null, callback: cb}); },
+          function(cb) { Ping.createForCheck({ status: true, timestamp: now - 1000, time: 100, check: check1, monitorName: 'dummy3', error: '', details: null, callback: cb}); }
           function(cb) { Ping.createForCheck(false, 200, now - 2000, 100, check1, 'dummy2', '', null, cb); },
-          function(cb) { Ping.createForCheck(true, 200, now - 1000, 100, check1, 'dummy3', '', null, cb); }
         ], done);
       });
     });
@@ -239,13 +237,13 @@ describe('intervalBuilder', function() {
       check1.save(function(err) {
         if (err) return done(err);
         async.series([
-          function(cb) { Ping.createForCheck(false, now - 3000, 100, check1, 'dummy1', '', null, cb); },
-          function(cb) { Ping.createForCheck(false, now - 2000, 100, check1, 'dummy2', '', null, cb); },
-          function(cb) { Ping.createForCheck(true,  now - 1000, 100, check1, 'dummy3', '', null, cb); },
-          function(cb) { Ping.createForCheck(true,  now,        100, check1, 'dummy4', '', null, cb); },
-          function(cb) { Ping.createForCheck(true,  now + 1000, 100, check1, 'dummy5', '', null, cb); },
-          function(cb) { Ping.createForCheck(false, now + 2000, 100, check1, 'dummy6', '', null, cb); },
-          function(cb) { Ping.createForCheck(true,  now + 3000, 100, check1, 'dummy7', '', null, cb); }
+            function(cb) { Ping.createForCheck({ status: false, timestamp: now - 3000, time: 100, check: check1, monitorName: 'dummy1', error: '', details: null, callback: cb}); },
+            function(cb) { Ping.createForCheck({ status: false, timestamp: now - 2000, time: 100, check: check1, monitorName: 'dummy2', error: '', details: null, callback: cb}); },
+            function(cb) { Ping.createForCheck({ status: true, timestamp: now - 1000, time: 100, check: check1, monitorName: 'dummy3', error: '', details: null, callback: cb}); },
+            function(cb) { Ping.createForCheck({ status: true, timestamp: now,        time: 100, check: check1, monitorName: 'dummy4', error: '', details: null, callback: cb}); },
+            function(cb) { Ping.createForCheck({ status: true, timestamp: now + 1000, time: 100, check: check1, monitorName: 'dummy5', error: '', details: null, callback: cb}); },
+            function(cb) { Ping.createForCheck({ status: false, timestamp: now + 2000, time: 100, check: check1, monitorName: 'dummy6', error: '', details: null, callback: cb}); },
+            function(cb) { Ping.createForCheck({ status: true, timestamp: now + 3000, time: 100, check: check1, monitorName: 'dummy7', error: '', details: null, callback: cb}); }
         ], done);
       });
     });
