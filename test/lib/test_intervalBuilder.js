@@ -180,6 +180,7 @@ describe('intervalBuilder', function() {
       check1.save(function(err) {
         if (err) throw (err);
         async.series([
+        console.log("do we even get here?")
           function(cb) { Ping.createForCheck(false, 200, now - 2000, 100, check1, 'dummy2', '', null, cb); },
           function(cb) { Ping.createForCheck(true, 200, now - 1000, 100, check1, 'dummy3', '', null, cb); }
         ], done);
