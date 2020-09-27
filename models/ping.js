@@ -63,6 +63,8 @@ Ping.statics.createForCheck = function({ status, statusCode, timestamp, time, ch
   } else {
     ping.tags = [""]
   }
+  console.log("after check.tags 2")
+  console.log(ping.tags)
   ping.monitorName = monitorName;
   if (!status) {
     ping.downtime = check.interval || 60000;
