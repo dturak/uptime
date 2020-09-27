@@ -178,21 +178,8 @@ describe('intervalBuilder', function() {
       check1.save(function(err) {
         if (err) throw (err);
         async.series([
-//          function(cb) { Ping.createForCheck(false, now - 2000, 100, check1, 'dummy2', '', null, cb); },
-//          function(cb) { Ping.createForCheck(true,  now - 1000, 100, check1, 'dummy3', '', null, cb); }
-          function(cb) {
-            check1 = new Check();
-            check1.url = 'http://www.url1.fr';
-            check1.name = 'name1';
-            check1.isPaused = false;
-            check1.save(cb);
-          }
-          function(cb) {
-            check2 = new Check();
-            check2.url = 'http://www.url2.fr';
-            check2.isPaused = false;
-            check2.save(cb);
-          }
+          function(cb) { Ping.createForCheck(false, now - 2000, 100, check1, 'dummy2', '', null, cb); },
+          function(cb) { Ping.createForCheck(true,  now - 1000, 100, check1, 'dummy3', '', null, cb); }
         ], done);
       });
     });
