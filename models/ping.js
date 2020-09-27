@@ -31,8 +31,6 @@ Ping.methods.setDetails = function(details) {
 };
 
 Ping.statics.createForCheck = function({ status, statusCode, timestamp, time, check, monitorName, error, errorCode, details, callback }) {
-  console.log("check one two check:")
-  console.log(check)
   timestamp = timestamp || new Date();
   timestamp = timestamp instanceof Date ? timestamp : new Date(parseInt(timestamp, 10));
 
@@ -57,18 +55,8 @@ Ping.statics.createForCheck = function({ status, statusCode, timestamp, time, ch
   }
 
   ping.time = time;
-  console.log("before ping.check")
   ping.check = check;
-  console.log(check)
-  console.log(check.tags)
-  console.log("before check.tags")
-  if (check.tags) {
-    ping.tags = check.tags;
-  } else {
-    ping.tags = [""]
-  }
-  console.log("after check.tags 2")
-  console.log(ping.tags)
+  ping.tags = check.tags;
   ping.monitorName = monitorName;
   if (!status) {
     ping.downtime = check.interval || 60000;
