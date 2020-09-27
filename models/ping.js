@@ -57,6 +57,8 @@ Ping.statics.createForCheck = function({ status, statusCode, timestamp, time, ch
   ping.time = time;
   console.log("before ping.check")
   ping.check = check;
+  console.log(check)
+  console.log(check.tags)
   console.log("before check.tags")
   if (check.tags) {
     ping.tags = check.tags;
