@@ -261,6 +261,7 @@ describe('intervalBuilder', function() {
         console.log(now)
         console.log(now + 1000)
         console.log(builder.PAUSED)
+        console.log(periods)
         periods.should.eql([[now, now + 1000, builder.PAUSED]]);
         done();
       });
