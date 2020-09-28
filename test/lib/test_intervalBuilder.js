@@ -255,7 +255,7 @@ describe('intervalBuilder', function() {
     it('should return a full pause array when there is no ping at all', function(done) {
       var builder = new IntervalBuilder();
       builder.addTarget(check2);
-      builder.build(now, now + 1000, function(err, periods) {
+      builder.build(now + 4000, now + 5000, function(err, periods) {
         if (err) return done(err);
         console.log("logs:")
         console.log(now)
