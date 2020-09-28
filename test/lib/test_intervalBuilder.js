@@ -249,7 +249,13 @@ describe('intervalBuilder', function() {
 
     before(function(done) {
       check2 = new Check();
-      check2.save(done);
+      // check2.save(done);
+      check2.save(function(err) {
+        if (err) return done(err);
+        async.series([
+          function(cb) { Ping.createForCheck({ status: true, timestamp: now + 1000, time: 100, check: check1, monitorName: 'dummy5', error: '', details: null, callback: cb}); }
+        ], done);
+      });
     });
 
     it('should return a full pause array when there is no ping at all', function(done) {
