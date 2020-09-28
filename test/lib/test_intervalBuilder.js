@@ -253,7 +253,7 @@ describe('intervalBuilder', function() {
     });
 
     it('should return a full pause array when there is no ping at all', function(done) {
-      var builder = new IntervalBuilder();
+      let builder = new IntervalBuilder();
       builder.addTarget(check2);
       builder.build(now, now + 1000, function(err, periods) {
         if (err) return done(err);
@@ -273,7 +273,7 @@ describe('intervalBuilder', function() {
       builder.build(now + 3000, now + 6000, function(err, periods) {
         if (err) throw (err);
         periods.should.eql([]);
-        done();
+//        done();
       });
     });
 
@@ -293,7 +293,7 @@ describe('intervalBuilder', function() {
       builder.build(now - 1000, now + 3000, function(err, periods) {
         if (err) throw (err);
         periods.should.eql([ [ now + 2000, now + 3000, 0]]);
-        done();
+//        done();
       });
     });
 
