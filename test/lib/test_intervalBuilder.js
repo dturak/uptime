@@ -252,20 +252,20 @@ describe('intervalBuilder', function() {
       check2.save(done);
     });
 
-//    it('should return a full pause array when there is no ping at all', function(done) {
-//      var builder = new IntervalBuilder();
-//      builder.addTarget(check2);
-//      builder.build(now, now + 1000, function(err, periods) {
-//        if (err) return done(err);
-//        console.log("logs:")
-//        console.log(now)
-//        console.log(now + 1000)
-//        console.log(builder.PAUSED)
-//        console.log(periods)
-//        periods.should.eql([[now, now + 1000, builder.PAUSED]]);
-//        done();
-//      });
-//    });
+   it('should return a full pause array when there is no ping at all', function(done) {
+     let builder = new IntervalBuilder();
+     builder.addTarget(check2);
+     builder.build(now, now + 1000, function(err, periods) {
+       if (err) return done(err);
+       console.log("logs:")
+       console.log(now)
+       console.log(now + 1000)
+       console.log(builder.PAUSED)
+       console.log(periods)
+       periods.should.eql([[now, now + 1000, builder.PAUSED]]);
+       done();
+     });
+   });
 
     it('should return an empty array when there is no down ping', function(done) {
       var builder = new IntervalBuilder();
