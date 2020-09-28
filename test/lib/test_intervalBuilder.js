@@ -273,7 +273,7 @@ describe('intervalBuilder', function() {
       builder.build(now + 3000, now + 6000, function(err, periods) {
         if (err) throw (err);
         periods.should.eql([]);
-//        done();
+        done();
       });
     });
 
@@ -293,7 +293,7 @@ describe('intervalBuilder', function() {
       builder.build(now - 1000, now + 3000, function(err, periods) {
         if (err) throw (err);
         periods.should.eql([ [ now + 2000, now + 3000, 0]]);
-//        done();
+        done();
       });
     });
 
