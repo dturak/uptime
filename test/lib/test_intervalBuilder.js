@@ -253,25 +253,25 @@ describe('intervalBuilder', function() {
     });
 
    //// This is not the current functionality and I do not currently know enough to tell if it is wrong
-   // it('should return a full pause array when there is no ping at all', function(done) {
-   //   let builder = new IntervalBuilder();
-   //   builder.addTarget(check2);
-   //   builder.build(now, now + 1000, function(err, periods) {
-   //     if (err) return done(err);
-   //     periods.should.eql([[now, now + 1000, builder.PAUSED]]);
-   //     done();
-   //   });
-   // });
+   it('should return a full pause array when there is no ping at all', function(done) {
+     let builder = new IntervalBuilder();
+     builder.addTarget(check2);
+     builder.build(now, now + 1000, function(err, periods) {
+       if (err) return done(err);
+       periods.should.eql([[now, now + 1000, builder.PAUSED]]);
+       done();
+     });
+   });
 
-  it('Should return empty array when there is no ping for an interval', function(done) {
-      let builder = new IntervalBuilder();
-      builder.addTarget(check2);
-      builder.build(now, now + 1000, function(err, periods) {
-          if (err) return done(err);
-          periods.should.eql([]);
-          done();
-      });
-  });
+  // it('Should return empty array when there is no ping for an interval', function(done) {
+  //     let builder = new IntervalBuilder();
+  //     builder.addTarget(check2);
+  //     builder.build(now, now + 1000, function(err, periods) {
+  //         if (err) return done(err);
+  //         periods.should.eql([]);
+  //         done();
+  //     });
+  // });
 
     it('should return an empty array when there is no down ping', function(done) {
       var builder = new IntervalBuilder();
