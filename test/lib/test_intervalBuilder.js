@@ -273,45 +273,45 @@ describe('intervalBuilder', function() {
       });
   });
 
-    // it('should return an empty array when there is no down ping', function(done) {
-    //   var builder = new IntervalBuilder();
-    //   builder.addTarget(check1);
-    //   builder.build(now + 3000, now + 6000, function(err, periods) {
-    //     if (err) throw (err);
-    //     periods.should.eql([]);
-    //     done();
-    //   });
-    // });
+    it('should return an empty array when there is no down ping', function(done) {
+      var builder = new IntervalBuilder();
+      builder.addTarget(check1);
+      builder.build(now + 3000, now + 6000, function(err, periods) {
+        if (err) throw (err);
+        periods.should.eql([]);
+        done();
+      });
+    });
 
-//    it('should return a period ending at the end of the lookup period when the latest ping is down', function(done) {
-//      var builder = new IntervalBuilder();
-//      builder.addTarget(check1);
-//      builder.build(now - 2500, now - 2000, function(err, periods) {
-//        if (err) throw (err);
-//        periods.should.eql([ [now - 2500, now - 2000, 0] ]);
-//        done();
-//      });
-//    });
-//
-//     it('should return an outage period even if the state at the beginning and at the end are up', function(done) {
-//       var builder = new IntervalBuilder();
-//       builder.addTarget(check1);
-//       builder.build(now - 1000, now + 3000, function(err, periods) {
-//         if (err) throw (err);
-//         periods.should.eql([ [ now + 2000, now + 3000, 0]]);
-//         done();
-//       });
-//     });
-//
-//    it('should return several periods when an uptime period lies in the middle of the interval', function(done) {
-//      var builder = new IntervalBuilder();
-//      builder.addTarget(check1);
-//      builder.build(now - 4000, now + 3000, function(err, periods) {
-//        if (err) throw (err);
-//        periods.should.eql([ [now - 4000, now - 3000, -1], [now - 3000, now - 1000, 0], [now + 2000, now + 3000, 0] ]);
-//        done();
-//      });
-//    });
+   it('should return a period ending at the end of the lookup period when the latest ping is down', function(done) {
+     var builder = new IntervalBuilder();
+     builder.addTarget(check1);
+     builder.build(now - 2500, now - 2000, function(err, periods) {
+       if (err) throw (err);
+       periods.should.eql([ [now - 2500, now - 2000, 0] ]);
+       done();
+     });
+   });
+
+    it('should return an outage period even if the state at the beginning and at the end are up', function(done) {
+      var builder = new IntervalBuilder();
+      builder.addTarget(check1);
+      builder.build(now - 1000, now + 3000, function(err, periods) {
+        if (err) throw (err);
+        periods.should.eql([ [ now + 2000, now + 3000, 0]]);
+        done();
+      });
+    });
+
+   it('should return several periods when an uptime period lies in the middle of the interval', function(done) {
+     var builder = new IntervalBuilder();
+     builder.addTarget(check1);
+     builder.build(now - 4000, now + 3000, function(err, periods) {
+       if (err) throw (err);
+       periods.should.eql([ [now - 4000, now - 3000, -1], [now - 3000, now - 1000, 0], [now + 2000, now + 3000, 0] ]);
+       done();
+     });
+   });
 
     after(function(done) {
       async.parallel([
