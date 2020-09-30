@@ -42,11 +42,11 @@
     "api",
     "check"
   ],
-  "repository": "https://github.com/fzaninotto/uptime",
+  "repository": "https://github.com/accruent/uptime",
   "license": "MIT",
   "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
+    "node": "12.18.x",
+    "npm": "6.14.x"
   },
   "scripts": {
     "test": "nyc --exclude 'plugins' --exclude 'fixtures' mocha 'test/*/*.js' --retries 3 --timeout 5s --parallel --exit",
