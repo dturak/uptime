@@ -31,17 +31,17 @@ describe('intervalBuilder', function () {
     describe('#addTarget', function () {
 
         it('should accept Check objects', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.isEmpty().should.be.ok;
-            var check = new Check();
-            var id = check._id;
+            let check = new Check();
+            let id = check._id;
             builder.addTarget(check);
             builder.isEmpty().should.not.be.ok;
             builder.objectIds.should.eql([id]);
         });
 
         it('should accept Check identifiers', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.isEmpty().should.be.ok;
             builder.addTarget('1234');
             builder.isEmpty().should.not.be.ok;
@@ -53,7 +53,7 @@ describe('intervalBuilder', function () {
     describe('#changeObjectState', function () {
 
         it('should change the builder state to UP when passed an up event', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget('1234');
             builder.changeObjectState('1234', 'up');
             builder.isUp('1234').should.be.ok;
@@ -62,7 +62,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should change the builder state to DOWN when passed a down event', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget('1234');
             builder.changeObjectState('1234', 'down');
             builder.isUp('1234').should.not.be.ok;
@@ -71,7 +71,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should change the builder state to PAUSED when passed a paused event', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget('1234');
             builder.changeObjectState('1234', 'paused');
             builder.isUp('1234').should.not.be.ok;
@@ -80,7 +80,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should change the builder state to PAUSED when passed a restarted event', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget('1234');
             builder.changeObjectState('1234', 'restarted');
             builder.isUp('1234').should.not.be.ok;
@@ -89,7 +89,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should return true if the object state is modified', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget('1234');
             builder.changeObjectState('1234', 'up').should.be.ok;
             builder.changeObjectState('1234', 'down').should.be.ok;
@@ -105,7 +105,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should return false if the object state is not modified', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget('1234');
             builder.changeObjectState('1234', 'up');
             builder.changeObjectState('1234', 'up').should.not.be.ok;
@@ -123,7 +123,7 @@ describe('intervalBuilder', function () {
     describe('#getGlobalState', function () {
 
         it('should equal the target state when the target is unique', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget(1234);
             builder.changeObjectState(1234, 'up');
             builder.getGlobalState().should.eql(builder.UP);
@@ -136,7 +136,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should be DOWN when at least one target is down', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget(1);
             builder.addTarget(2);
             builder.addTarget(3);
@@ -149,7 +149,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should be PAUSED when all targets are paused', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget(1);
             builder.addTarget(2);
             builder.addTarget(3);
@@ -162,7 +162,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should be UP when no target are down', function () {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget(1);
             builder.addTarget(2);
             builder.addTarget(3);
@@ -217,7 +217,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should set initial state to PAUSED for new Checks', function (done) {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget(check2);
             builder.determineInitialState(now, function (err) {
                 if (err) throw (err);
@@ -227,7 +227,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should set the initial state to UP if the latest ping is up', function (done) {
-            var builder = new IntervalBuilder(check1);
+            let builder = new IntervalBuilder(check1);
             builder.addTarget(check1);
             builder.determineInitialState(now, function (err) {
                 if (err) throw (err);
@@ -237,7 +237,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should set the initial state to DOWN if the latest ping is down', function (done) {
-            var builder = new IntervalBuilder(check1);
+            let builder = new IntervalBuilder(check1);
             builder.addTarget(check1);
             builder.determineInitialState(now - 1500, function (err) {
                 if (err) throw (err);
@@ -385,7 +385,7 @@ describe('intervalBuilder', function () {
         });
 
         it('should return an empty array when there is no down ping', function (done) {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget(check1);
             builder.build(now + 3000, now + 6000, function (err, periods) {
                 if (err) throw (err);
@@ -395,7 +395,7 @@ describe('intervalBuilder', function () {
         });
         //// This is not the current functionality and I do not currently know enough to tell if it is wrong
         // it('should return a period ending at the end of the lookup period when the latest ping is down', function(done) {
-        //   var builder = new IntervalBuilder();
+        //   let builder = new IntervalBuilder();
         //   builder.addTarget(check1);
         //   builder.build(now - 2500, now - 2000, function(err, periods) {
         //     if (err) throw (err);
@@ -405,7 +405,7 @@ describe('intervalBuilder', function () {
         // });
 
         it('should return an outage period even if the state at the beginning and at the end are up', function (done) {
-            var builder = new IntervalBuilder();
+            let builder = new IntervalBuilder();
             builder.addTarget(check1);
             builder.build(now - 1000, now + 3000, function (err, periods) {
                 if (err) throw (err);
@@ -416,7 +416,7 @@ describe('intervalBuilder', function () {
 
         //// This is not the current functionality and I do not currently know enough to tell if it is wrong
         // it('should return several periods when an uptime period lies in the middle of the interval', function(done) {
-        //   var builder = new IntervalBuilder();
+        //   let builder = new IntervalBuilder();
         //   builder.addTarget(check1);
         //   builder.build(now - 4000, now + 3000, function(err, periods) {
         //     if (err) throw (err);

@@ -217,43 +217,43 @@ describe('POST /checks/:id', function () {
         check2.save(done);
     });
 
-// this one works but causes the process to continue for some reason
-     it('should return error if id parameter does not exists', function(done) {
+    it('should return error if id parameter does not exists', function (done) {
 
-       let postData = JSON.stringify({
-         name: 'test'
-       });
+        let postData = JSON.stringify({
+            name: 'test'
+        });
 
-       let options = {
-         hostname: 'localhost',
-         port: 3003,
-         path: '/api/checks/toto',
-         method: 'POST',
-         headers: {
-           'Content-Length': postData.length,
-           'Content-Type': 'application/json',
-           'Accept': 'application/json'
-         }
-       };
+        let options = {
+            hostname: 'localhost',
+            port: 3003,
+            path: '/api/checks/toto',
+            method: 'POST',
+            headers: {
+                'Content-Length': postData.length,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        };
 
-       let req = http.request(options, function(res) {
-         res.setEncoding('utf8');
-         let body = '';
+        let req = http.request(options, function (res) {
+            res.setEncoding('utf8');
+            let body = '';
 
-         res.on('data', function(chunk) {
-           body += chunk;
-         });
-         res.on('end', function() {
-           // let object = JSON.parse(body);
-           // assert.notStrictEqual(typeof(object.error), 'undefined');
-           assert.notStrictEqual(typeof(body), 'undefined');
-           done();
-         });
-       });
+            res.on('data', function (chunk) {
+                body += chunk;
+            });
+            res.on('end', function () {
+                //// Not sure whats up here but again its a pretty old test
+                // let object = JSON.parse(body);
+                // assert.notStrictEqual(typeof(object.error), 'undefined');
+                assert.notStrictEqual(typeof (body), 'undefined');
+                done();
+            });
+        });
 
-       req.write(postData);
-       req.end();
-     });
+        req.write(postData);
+        req.end();
+    });
 
     it('should update object if parameters are valid', function (done) {
 
