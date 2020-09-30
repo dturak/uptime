@@ -193,23 +193,47 @@ describe('PUT /checks', function () {
 
 describe('POST /checks/:id', function () {
 
-    before(function () {
+    // before(function () {
+    //     this.enableTimeouts(false)
+    //     pollerCollection = app.get('pollerCollection');
+    //     this.server = app.listen(3003);
+    // });
+    //
+    // beforeEach(function () {
+    //     check1 = new Check();
+    //     check1.url = 'http://www.url1.fr';
+    //     check1.name = 'name1';
+    //     check1.isPaused = false;
+    //     check1.save();
+    //
+    //     check2 = new Check();
+    //     check2.url = 'http://www.url2.fr';
+    //     check2.isPaused = false;
+    //     check2.save();
+    // });
+    before(function (done) {
         this.enableTimeouts(false)
         pollerCollection = app.get('pollerCollection');
-        this.server = app.listen(3003);
+        this.server = app.listen(3003, done);
     });
 
-    beforeEach(function () {
+    before(function (done) {
+        Check.remove({}, done);
+    });
+
+    before(function (done) {
         check1 = new Check();
         check1.url = 'http://www.url1.fr';
         check1.name = 'name1';
         check1.isPaused = false;
-        check1.save();
+        check1.save(done);
+    });
 
+    before(function (done) {
         check2 = new Check();
         check2.url = 'http://www.url2.fr';
         check2.isPaused = false;
-        check2.save();
+        check2.save(done);
     });
 
 //this one works but causes the process to continue for some reason
@@ -249,7 +273,7 @@ describe('POST /checks/:id', function () {
 //    req.end();
 //  });
 
-    it('should update object if parameters are valid', function () {
+    it('should update object if parameters are valid', function (done) {
 
         let postData = JSON.stringify({
             name: 'test',
@@ -279,6 +303,7 @@ describe('POST /checks/:id', function () {
                 let object = JSON.parse(body);
                 assert.equal(object.name, 'test');
                 assert.equal(object.url, 'http://newurl.test');
+                done();
             });
         });
 
@@ -286,7 +311,7 @@ describe('POST /checks/:id', function () {
         req.end();
     });
 
-    it('should not throw error if called twice on same id', function () {
+    it('should not throw error if called twice on same id', function (done) {
         let postData = JSON.stringify({
             name: 'test',
             url: 'http://newurl.test'
@@ -315,6 +340,7 @@ describe('POST /checks/:id', function () {
                 let object = JSON.parse(body);
                 assert.equal(typeof (object.error), 'undefined');
                 assert.notEqual(typeof (object.name), 'undefined');
+                done();
             });
         });
 
@@ -322,8 +348,8 @@ describe('POST /checks/:id', function () {
         req.end();
     });
 
-    after(function () {
-        Check.remove({});
+    after(function (done) {
+        Check.remove({}, done);
         this.server.close();
     });
 });
