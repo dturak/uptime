@@ -2,5 +2,5 @@ Alert | <%= check.name %> was Paused!
 On <%= moment(checkEvent.timestamp).format('LLLL') %>,
 check "<%= check.name %>" was manually paused.
 
-<% include details %>
-<% include footer %>
+<%- include('details') -%>
+<%- include('footer') -%>
