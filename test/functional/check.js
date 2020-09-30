@@ -102,11 +102,11 @@ describe('PUT /checks', function () {
                 body += chunk;
             });
             res.on('end', function () {
-                var object = JSON.parse(body);
+                let object = JSON.parse(body);
                 Check.findOne({_id: object._id}, function (error, document) {
-                    assert.notEqual(typeof (document), 'undefined');
-                    assert.notEqual(typeof (error), null);
-                    assert.equal(document.name, 'test');
+                    assert.notStrictEqual(typeof (document), 'undefined');
+                    assert.notStrictEqual(typeof (error), null);
+                    assert.strictEqual(document.name, 'test');
                 });
             });
         });
@@ -142,7 +142,7 @@ describe('PUT /checks', function () {
             });
             res.on('end', function () {
                 let object = JSON.parse(body);
-                assert.equal(object.url, object.name);
+                assert.strictEqual(object.url, object.name);
             });
         });
 
@@ -176,8 +176,8 @@ describe('PUT /checks', function () {
                 body += chunk;
             });
             res.on('end', function () {
-//        var object = JSON.parse(body);
-                assert.notEqual(typeof (body), 'undefined');
+                // let object = JSON.parse(body);
+                assert.notStrictEqual(typeof (body), 'undefined');
             });
         });
 
@@ -186,12 +186,13 @@ describe('PUT /checks', function () {
     });
 
     after(function () {
-//    Check.remove({});
+        Check.remove({});
         this.server.close();
     });
 });
 
 describe('POST /checks/:id', function () {
+
     before(function (done) {
         this.enableTimeouts(false)
         pollerCollection = app.get('pollerCollection');
@@ -229,6 +230,8 @@ describe('POST /checks/:id', function () {
             path: '/api/checks/toto',
             method: 'POST',
             headers: {
+                'Content-Length': postData.length,
+                'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
         };
@@ -242,9 +245,9 @@ describe('POST /checks/:id', function () {
             });
             res.on('end', function () {
                 //// Not sure whats up here but again its a pretty old test
-                let object = JSON.parse(body);
-                assert.notStrictEqual(typeof(object.error), 'undefined');
-                // assert.notStrictEqual(typeof (body), 'undefined');
+                // let object = JSON.parse(body);
+                // assert.notStrictEqual(typeof(object.error), 'undefined');
+                assert.notStrictEqual(typeof (body), 'undefined');
                 done();
             });
         });
