@@ -1,7 +1,6 @@
 process.env.NODE_ENV = 'test';
 require('should');
 var async = require('async');
-// var mongoose = require('../../bootstrap');
 var IntervalBuilder = require('../../lib/intervalBuilder');
 var Ping = require('../../models/ping');
 var Check = require('../../models/check');
