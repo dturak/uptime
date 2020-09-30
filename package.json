@@ -50,8 +50,8 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "test": "nyc --exclude 'plugins' mocha 'test/*/*.js' --retries 3 --timeout 5s --parallel --exit",
-    "coverage": "nyc report --reporter=text-lcov --exclude 'plugins' | coveralls",
+    "test": "nyc --exclude 'plugins' --exclude 'fixtures' mocha 'test/*/*.js' --retries 3 --timeout 5s --parallel --exit",
+    "coverage": "nyc report --reporter=text-lcov --exclude 'plugins' --exclude 'fixtures' | coveralls",
     "start": "node app.js"
   }
 }
