@@ -51,7 +51,7 @@
   },
   "scripts": {
     "test": "nyc --exclude 'plugins' mocha 'test/*/*.js' --retries 3 --timeout 5s --parallel --exit",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc report --reporter=text-lcov --exclude 'plugins' | coveralls",
     "start": "node app.js"
   }
 }
