@@ -77,12 +77,12 @@ describe('PUT /checks', function () {
 
     it('should add a new valid element', function () {
 
-        var postData = JSON.stringify({
+        let postData = JSON.stringify({
             name: 'test',
             url: 'http://test.local'
         });
 
-        var options = {
+        let options = {
             hostname: 'localhost',
             port: 3003,
             path: '/api/checks',
@@ -94,9 +94,9 @@ describe('PUT /checks', function () {
             }
         };
 
-        var req = http.request(options, function (res) {
+        let req = http.request(options, function (res) {
             res.setEncoding('utf8');
-            var body = '';
+            let body = '';
 
             res.on('data', function (chunk) {
                 body += chunk;
@@ -116,12 +116,12 @@ describe('PUT /checks', function () {
     });
 
     it('should add a new element with url as name if name is empty', function () {
-        var postData = JSON.stringify({
+        let postData = JSON.stringify({
             name: '',
             url: 'http://mynewurl.test'
         });
 
-        var options = {
+        let options = {
             hostname: 'localhost',
             port: 3003,
             path: '/api/checks',
@@ -133,15 +133,15 @@ describe('PUT /checks', function () {
             }
         };
 
-        var req = http.request(options, function (res) {
+        let req = http.request(options, function (res) {
             res.setEncoding('utf8');
-            var body = '';
+            let body = '';
 
             res.on('data', function (chunk) {
                 body += chunk;
             });
             res.on('end', function () {
-                var object = JSON.parse(body);
+                let object = JSON.parse(body);
                 assert.equal(object.url, object.name);
             });
         });
@@ -229,8 +229,6 @@ describe('POST /checks/:id', function () {
             path: '/api/checks/toto',
             method: 'POST',
             headers: {
-                'Content-Length': postData.length,
-                'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
         };
@@ -244,9 +242,9 @@ describe('POST /checks/:id', function () {
             });
             res.on('end', function () {
                 //// Not sure whats up here but again its a pretty old test
-                // let object = JSON.parse(body);
-                // assert.notStrictEqual(typeof(object.error), 'undefined');
-                assert.notStrictEqual(typeof (body), 'undefined');
+                let object = JSON.parse(body);
+                assert.notStrictEqual(typeof(object.error), 'undefined');
+                // assert.notStrictEqual(typeof (body), 'undefined');
                 done();
             });
         });
