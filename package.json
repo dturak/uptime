@@ -4,7 +4,7 @@
   "version": "4.0.0",
   "author": "Francois Zaninotto",
   "dependencies": {
-    "async": "2.6.1",
+    "async": "3.2.0",
     "config": "1.30.0",
     "connect-flash": "0.1.1",
     "cookie-parser": "^1.4.3",
