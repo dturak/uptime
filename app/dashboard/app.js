@@ -23,7 +23,7 @@ var RateLimit = require('express-rate-limit');
 var config     = require('config');
 var limiter = new RateLimit({
   windowMs: 60000, // 1 minute
-  max: config.monitor.pollingInterval/100
+  max: config.monitor.pollingInterval/10
 });
 app.use(limiter);
 

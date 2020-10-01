@@ -7,6 +7,7 @@ var CheckEvent       = require('../../../models/checkEvent');
 var CheckHourlyStat  = require('../../../models/checkHourlyStat');
 var CheckDailyStat   = require('../../../models/checkDailyStat');
 var CheckMonthlyStat = require('../../../models/checkMonthlyStat');
+var jsyaml           = require('js-yaml');
 
 /**
  * Check Routes
@@ -14,9 +15,10 @@ var CheckMonthlyStat = require('../../../models/checkMonthlyStat');
 module.exports = function(app) {
 
   app.get('/checks', function(req, res, next) {
-    var query = {};
+    let query = {};
+    let data = jsyaml.safeLoad(req.params.data);
     if (req.query.tag) {
-      query.tags = req.query.tag;
+      query.tags = data.query.tag;
     }
     Check
     .find(query)
