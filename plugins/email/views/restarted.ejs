@@ -2,5 +2,5 @@ Alert | <%= check.name %> was Restarted!
 On <%= moment(checkEvent.timestamp).format('LLLL') %>,
 check "<%= check.name %>" was manually restarted.
 
-<% include details %>
-<% include footer %>
+<%- include('details') -%>
+<%- include('footer') -%>

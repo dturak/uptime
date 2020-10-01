@@ -7,5 +7,5 @@ Alert | <%= check.name %> is Now Up!
 On <%= moment(checkEvent.timestamp).format('LLLL') %>,
 <% }%> <%= check.name %> went up.
 
-<% include details %>
-<% include footer %>
+<%- include('details') -%>
+<%- include('footer') -%>
