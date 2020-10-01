@@ -15,7 +15,7 @@
     "express-error-handler": "^1.1.0",
     "express-partials": "0.3.0",
     "js-yaml": "3.14.0",
-    "jsonschema": "1.2.4",
+    "jsonschema": "1.2.7",
     "method-override": "^2.3.10",
     "moment": "^2.22.2",
     "mongoose": "5.9.29",
