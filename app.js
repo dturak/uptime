@@ -43,7 +43,7 @@ a.start();
 var app = module.exports = express();
 var server = http.createServer(app);
 
-// set up rate limiter: maximum of 100 requests per minute
+// set up rate limiter: maximum of request determined by pollingInterval
 var RateLimit = require('express-rate-limit');
 var limiter = new RateLimit({
   windowMs: 60000, // 1 minute

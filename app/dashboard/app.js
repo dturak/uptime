@@ -18,6 +18,14 @@ var moduleInfo = require('../../package.json');
 
 var app = module.exports = express();
 
+// set up rate limiter: maximum of request determined by pollingInterval
+var RateLimit = require('express-rate-limit');
+var limiter = new RateLimit({
+  windowMs: 60000, // 1 minute
+  max: config.monitor.pollingInterval/100
+});
+app.use(limiter);
+
 // middleware
 
 app.use(partials());
