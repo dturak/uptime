@@ -25,7 +25,7 @@ plugins:
   - ./plugins/patternMatcher
   - ./plugins/httpOptions
   - ./plugins/httpsOAuthOptions
-  - ./plugins/email
+  #- ./plugins/email
   #- ./plugins/hipchat
   #- ./plugins/victorops
   #- ./plugins/statushub
