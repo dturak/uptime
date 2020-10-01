@@ -51,7 +51,8 @@ module.exports = function(app) {
   app.post('/pings', function(req, res) {
     Check.findById(req.body.checkId, function(err1, check) {
       if (err1) {
-        return res.send(err1.message, 500);
+        let err1_msg = err1.message.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+        return res.send(err1_msg, 500);
       }
       if (!check) {
         return res.send('Error: No existing check with id ' + req.body.checkId, 403);
