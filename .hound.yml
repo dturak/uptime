@@ -1,2 +1,3 @@
 jshint:
-  esversion: 6
+  enabled: false
+  config_file: .jshintrc
