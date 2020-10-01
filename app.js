@@ -43,6 +43,14 @@ a.start();
 var app = module.exports = express();
 var server = http.createServer(app);
 
+// set up rate limiter: maximum of 100 requests per minute
+var RateLimit = require('express-rate-limit');
+var limiter = new RateLimit({
+  windowMs: 60000, // 1 minute
+  max: config.monitor.pollingInterval/100
+});
+app.use(limiter);
+
 // the following middlewares are only necessary for the mounted 'dashboard' app, 
 // but express needs it on the parent app (?) and it therefore pollutes the api
 app.use(bodyParser.urlencoded({
