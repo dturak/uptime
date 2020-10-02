@@ -6,6 +6,7 @@ var Check      = require('../../../models/check');
 var CheckEvent = require('../../../models/checkEvent');
 var Ping       = require('../../../models/ping');
 var jsyaml     = require('js-yaml');
+var escape     = require('escape-html');
 
 /**
  * Check Routes
@@ -53,11 +54,10 @@ module.exports = function(app) {
   app.post('/pings', function(req, res) {
     Check.findById(req.body.checkId, function(err1, check) {
       if (err1) {
-        let err1_msg = err1.message.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
-        return res.send(err1_msg, 500);
+        return res.send(escape(err1), 500);
       }
       if (!check) {
-        return res.send('Error: No existing check with id ' + req.body.checkId, 403);
+        return res.send('Error: No existing check with id ' + escape(req.body.checkId), 403);
       }
       if (!check.needsPoll) {
         return res.send('Error: This check was already polled. No ping was created', 403);
