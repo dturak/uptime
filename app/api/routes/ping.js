@@ -5,6 +5,7 @@
 var Check      = require('../../../models/check');
 var CheckEvent = require('../../../models/checkEvent');
 var Ping       = require('../../../models/ping');
+var jsyaml     = require('js-yaml');
 
 /**
  * Check Routes
@@ -13,9 +14,10 @@ module.exports = function(app) {
 
   // support 'check' and 'page' arguments in query string
   app.get('/pings', function(req, res, next) {
-    var query = {};
+    let query = {};
+    let data = jsyaml.safeLoad(req.params.data);
     if (req.query.check) {
-      query.check = req.query.check;
+      query.check = data.query.check;
     }
     Ping
     .find(query)
