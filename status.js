@@ -35,6 +35,14 @@ a.start();
 var app = module.exports = express();
 var server = http.createServer(app);
 
+// set up rate limiter: maximum of request determined by pollingInterval
+var RateLimit = require('express-rate-limit');
+var limiter = new RateLimit({
+  windowMs: 60000, // 1 minute
+  max: config.monitor.pollingInterval/10
+});
+app.use(limiter);
+
 // the following middlewares are only necessary for the mounted 'dashboard' app, 
 // but express needs it on the parent app (?) and it therefore pollutes the api
 app.use(bodyParser.urlencoded({
@@ -49,10 +57,16 @@ app.use(methodOverride(function (req, res) {
     return method
   }
 }))
-app.use(cookieParser('Z5V45V6B5U56B7J5N67J5VTH345GC4G5V4'));
+
+let crypto = require('crypto')
+
+let cookie = crypto.randomBytes(64).toString('hex');
+let secret = crypto.randomBytes(64).toString('hex');
+
+app.use(cookieParser(cookie));
 app.use(cookieSession({
   key:    'uptime',
-  secret: 'FZ5HEE5YHD3E566756234C45BY4DSFZ4',
+  secret: secret,
   proxy:  true,
   cookie: { maxAge: 60 * 60 * 1000 }
 }));
