@@ -27,7 +27,7 @@ var mongoose   = require('./bootstrap');
 mongoose.connect(
   config.mongodb.connectionString
   ||
-  'mongodb://' + config.mongodb.user + ':' + config.mongodb.password + '@' + config.mongodb.server +'/' + config.mongodb.database, { useNewUrlParser: true }
+  'mongodb://' + config.mongodb.user + ':' + config.mongodb.password + '@' + config.mongodb.server +'/' + config.mongodb.database, { useNewUrlParser: true, useUnifiedTopology: true }
 ).catch(function (error) {
   if (config.debug) {
     console.error('MongoDB error: ' + error.message);
@@ -183,7 +183,7 @@ if (!module.parent) {
     console.error('Warning: The server port setting is deprecated, please use the url setting instead');
     port = config.server.port;
   }
-  var port = port || serverUrl.port || process.env.PORT;
+  port = port || serverUrl.port || process.env.PORT;
   var host = serverUrl.hostname || process.env.HOST;
   server.listen(port, function(){
     console.log("Express server listening on host %s, port %d in %s mode", host, port, app.settings.env);

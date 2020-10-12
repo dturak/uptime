@@ -9,7 +9,8 @@ var connectWithRetry = function() {
     { 
       auto_reconnect: true,
       poolSize: 100,
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     },
     function(err) {
       if (!err) {
