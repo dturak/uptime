@@ -27,7 +27,7 @@ var mongoose   = require('./bootstrap');
 mongoose.connect(
   config.mongodb.connectionString
   ||
-  'mongodb://' + config.mongodb.user + ':' + config.mongodb.password + '@' + config.mongodb.server +'/' + config.mongodb.database
+  'mongodb://' + config.mongodb.user + ':' + config.mongodb.password + '@' + config.mongodb.server +'/' + config.mongodb.database, { useNewUrlParser: true }
 ).catch(function (error) {
   if (config.debug) {
     console.error('MongoDB error: ' + error.message);
