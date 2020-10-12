@@ -71,7 +71,7 @@ module.exports = function(app) {
   });
 
   app.put('/check/:id/test', function (req, res, next) {
-    Check.update({ _id: req.params.id }, { lastTested: new Date() }, function(err, numberAffected) {
+    Check.updateMany({ _id: req.params.id }, { lastTested: new Date() }, function(err, numberAffected) {
       if (err) return next(err);
       res.json({ numberAffected: numberAffected });
     });
