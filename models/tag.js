@@ -38,9 +38,9 @@ Tag.pre('remove', function(next) {
 Tag.methods.removeStats = function(callback) {
   var self = this;
   async.parallel([
-    function(cb) { TagHourlyStat.deleteMany({ name: self.name }, cb); },
-    function(cb) { TagDailyStat.deleteMany({ name: self.name }, cb); },
-    function(cb) { TagMonthlyStat.deleteMany({ name: self.name }, cb); }
+    function(cb) { TagHourlyStat.remove({ name: self.name }, cb); },
+    function(cb) { TagDailyStat.remove({ name: self.name }, cb); },
+    function(cb) { TagMonthlyStat.remove({ name: self.name }, cb); }
   ], callback);
 };
 
@@ -192,7 +192,7 @@ Tag.statics.removeOrphanTags = function(callback) {
       if (err2) return callback(err2);
       async.forEach(tags1, function(tag, next) {
         if (tags2.indexOf(tag.name) !== -1) return next();
-        tag.deleteMany(next);
+        tag.remove(next);
       }, callback);
     });
   });

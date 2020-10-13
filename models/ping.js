@@ -78,7 +78,7 @@ Ping.statics.createForCheck = function({ status, statusCode, timestamp, time, ch
 
 Ping.statics.cleanup = function(maxAge, callback) {
   var oldestDateToKeep = new Date(Date.now() - (maxAge ||  3 * 31 * 24 * 60 * 60 * 1000));
-  this.find({ timestamp: { $lt: new Date(oldestDateToKeep) } }).deleteMany(callback);
+  this.find({ timestamp: { $lt: new Date(oldestDateToKeep) } }).remove(callback);
 };
 
 module.exports = mongoose.model('Ping', Ping);
