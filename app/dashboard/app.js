@@ -198,7 +198,7 @@ app.delete('/tags/:name', function(req, res, next) {
     }
     if (!tag) return next(new Error('failed to load tag ' + req.params.name));
     // Delete tag relation first in order to avoid magic respawn
-    Check.collection.update({ tags: tag.name }, { $pull: { tags: tag.name } }, { multi: true }, function(err2) {
+    Check.collection.updateMany({ tags: tag.name }, { $pull: { tags: tag.name } }, { multi: true }, function(err2) {
       if (err2) return next(err2);
       // Then, remove the tag
       tag.remove(function(err3) {

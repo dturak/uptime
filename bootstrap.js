@@ -8,7 +8,11 @@ var connectWithRetry = function() {
     config.mongodb.connectionString || 'mongodb://' + config.mongodb.user + ':' + config.mongodb.password + '@' + config.mongodb.server +'/' + config.mongodb.database,
     { 
       auto_reconnect: true,
-      poolSize: 100
+      poolSize: 100,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
     },
     function(err) {
       if (!err) {

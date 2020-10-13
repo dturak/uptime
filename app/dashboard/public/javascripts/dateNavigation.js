@@ -13,7 +13,7 @@ DateNavigation.prototype.init = function (type, check) {
     // change date on click
     $('#dateNavigation').on('click', 'button', function (event) {
         var data = $(this).data();
-        interval.update(data.type, parseInt(data.date));
+        interval.updateOne(data.type, parseInt(data.date));
     });
 
     // redraw date range when time passes to enable new interval buttons
@@ -74,7 +74,7 @@ DateNavigation.prototype.init = function (type, check) {
             }
         }
         self.pushStateEnabled = false;
-        interval.update(params.type, parseInt(params.date));
+        interval.updateOne(params.type, parseInt(params.date));
         self.pushStateEnabled = true;
     });
     this.pushStateEnabled = true;
