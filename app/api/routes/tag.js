@@ -89,7 +89,7 @@ module.exports = function(app) {
 
   app.delete('/tags/:name', loadTag, function(req, res, next) {
     // Delete tag relation first in order to avoid magic respawn
-    Check.collection.update({ tags: req.tag.name }, { $pull: { tags: req.tag.name } }, { multi: true }, function(err) {
+    Check.collection.updateMany({ tags: req.tag.name }, { $pull: { tags: req.tag.name } }, { multi: true }, function(err) {
       if (err) return next(err);
       // Then, remove the tag
       req.tag.remove(function(err2) {

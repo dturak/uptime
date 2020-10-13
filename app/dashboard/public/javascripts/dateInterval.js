@@ -16,7 +16,7 @@ DateInterval.prototype.setDate = function(date) {
   this.trigger('change-date');
   this.refreshData();
 }
-DateInterval.prototype.update = function(type, date) {
+DateInterval.prototype.updateOne = function(type, date) {
   this.type = type;
   this.setDate(date);
 }
