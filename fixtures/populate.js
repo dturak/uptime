@@ -9,8 +9,8 @@ var backInTime = 3 * 30 * 24 * 60 * 60 * 1000; // defaults to 3 months ago
 var removeChecks = function(callback) {
   console.log('Removing Checks');
   async.series([
-    function(cb) { CheckEvent.collection.remove(cb); },
-    function(cb) { Check.collection.remove(cb); }
+    function(cb) { CheckEvent.collection.deleteMany(cb); },
+    function(cb) { Check.collection.deleteMany(cb); }
   ], callback);
 };
 
